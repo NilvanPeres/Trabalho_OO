@@ -31,7 +31,7 @@ public class Expense { private double expense;
 	}
 
 	public void setyear(int year) {
-		this.year = year;
+		this.year = year; 
 	}
 
 }
