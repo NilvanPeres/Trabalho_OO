@@ -26,7 +26,6 @@ public class Category {
 		this.categoryRegister = categoryRegister;
 	}
 	
-	
 	public void registerOfExpense(){
 		
 	}
