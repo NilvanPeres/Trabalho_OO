@@ -1,13 +1,19 @@
 package entities;
 
+import java.util.List;
+
 public class Category {
 	
 	private String categoryName;
 	private String categoryRegister;
+	private List<Expense> expenses;
 	
-	public Category(String categoryName, String categoryRegister) {
-		this.categoryName = categoryName;
-		this.categoryRegister = categoryRegister;
+	public void registerOfExpense(){
+		
+	}
+	
+	public void removeExpense(){
+		
 	}
 
 	public String getCategoryName() {
@@ -25,13 +31,13 @@ public class Category {
 	public void setCategoryRegister(String categoryRegister) {
 		this.categoryRegister = categoryRegister;
 	}
-	
-	public void registerOfExpense(){
-		
+
+	public List<Expense> getExpenses() {
+		return expenses;
 	}
-	
-	public void removeExpense(){
-		
+
+	public void setExpenses(List<Expense> expenses) {
+		this.expenses = expenses;
 	}
 	
 
