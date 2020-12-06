@@ -1,9 +1,8 @@
+package entities;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 import exceptions.NoCategoryFoundException;
 import exceptions.NoCategoryInExpenseException;
@@ -33,18 +32,17 @@ public class Register {
 				list = i;
 				found = true;
 				
-			}}
-		}
-	
-	public boolean validateName(JTextField name) {
-		String name;
-		name = keyboard.nextLine();
-		if (!name.matches("[a-zA-Z_]+")) {
-			JOptionPane.showMessageDialog(null, "Invalid name! Digite apenas letras para os n�meros");
+			}
+			}
+		if(found){
+			students.remove(list);
+            return true;
+        } else {
+            return false;
+        }
+    }
 			
-		}
-	}
-	
+		
 	public int getNumberStudents(){
 		return students.size();
 	}
@@ -102,7 +100,8 @@ public class Register {
         }
     		
     }
-    	
+    
+	/*
     public Double calculeIncomes(List<Student> students){ //calcula a renda mensal dos estudantes
 		Double total = 0.0;
 		students.forEach( Student -> total += Student.getIncome());
@@ -121,10 +120,13 @@ public class Register {
 
 		return total;
 	}
+	*/
 	public void ReportStudent() {
 		int size = students.size();{
+			  for(int i = 0; i < size; i++) {
 			System.out.println(students.get(i).getName());
 		}
 	}
 
+}
 }

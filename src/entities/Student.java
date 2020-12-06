@@ -21,6 +21,9 @@ public class Student {
 
 
 	public void setName(String name) {
+		if ((name.length() < 3) ||(name.length() > 20 || name == null ) ) {
+			   throw new IllegalArgumentException("Nome Invalido. Minimo de 3 caracteres  e maximo de 20");
+		}else
 		this.name = name;
 	}
 
