@@ -1,19 +1,21 @@
 package entities;
 
-public class SubCategory {
+public class SubCategory extends Category{
 
-	private String subCategory;
+	private String subCategoryName;
 	
-	public SubCategory(String subCategory) {
-		this.subCategory= subCategory;
+	public String getSubCategoryName() {
+		return subCategoryName;
 	}
 
-	public String getSubCategory() {
-		return subCategory;
+	public void setSubCategoryName(String subCategoryName) {
+		this.subCategoryName = subCategoryName;
 	}
 
-	public void setSubCategory(String subCategory) {
-		this.subCategory = subCategory;
-	}
+	
+    @Override //polimorfismo (?)
+    public String toString() {
+        return "SubCategory [subCategoryName=" + subCategoryName +"" +super.toString()+ "]";
+    }
 	
 }

@@ -1,39 +1,38 @@
 package entities;
 
-public class Expense { private double expense;
+public class Expense { 
+	private double expense;
     private int month;
     private int year;
     
-    public Expense(Double expense, int month, int year) {
-		this.expense = expense;
-		this.month = month;
-		this.year = year;
+    public Expense() {
+
 	}
-    
-    public double getexpense() {
+
+	public double getExpense() {
 		return expense;
 	}
 
-	public void setexpense(double expense) {
+	public void setExpense(double expense) {
 		this.expense = expense;
 	}
 
-    public int getmonth() {
+	public int getMonth() {
 		return month;
 	}
 
-	public void setmonth(int month) {
+	public void setMonth(int month) {
 		this.month = month;
 	}
 
-    public int getyear() {
+	public int getYear() {
 		return year;
 	}
 
-	public void setyear(int year) {
-		this.year = year; 
+	public void setYear(int year) {
+		this.year = year;
 	}
-
-}
+    
+    
 
 }

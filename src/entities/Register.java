@@ -10,7 +10,7 @@ public class Register {
 
 	public Double calculeIncomes(List<Student> students){ //calcula a renda mensal dos estudantes
 		Double total = 0.0;
-		students.forEach( student -> total += student.getIncome());
+		students.forEach( Student -> total += Student.getincome());
 
 		return total;
 	}
@@ -21,12 +21,10 @@ public class Register {
 									.stream()
 									.filter( category -> categoryName.equalsIgnoreCase(category.getCategoryName())).findFirst();
 		if(finded.isPresent()){
-			finded.get().getExpenses().forEach( expense -> total += expense.getExpense());
+			finded.get().getExpenses().forEach( expense -> total += expense.getexpense());
 		}
 
 		return total;
 	}
-
-
 
 }

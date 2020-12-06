@@ -12,32 +12,49 @@ public class Student {
 		this.income = income;
 	}
 
-    public String getname() {
+    
+	
+    public String getName() {
 		return name;
 	}
 
-	public void setname(String name) {
+
+
+	public void setName(String name) {
 		this.name = name;
 	}
 
-    public String getemail() {
+
+
+	public String getEmail() {
 		return email;
 	}
 
-	public void setemail(String email) {
+
+
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
-    public double getincome() {
+
+
+	public double getIncome() {
 		return income;
 	}
 
-	public void setincome(double income) {
-		this.income = income;
-	}
-	
-    public void registerOfStudent() {
-    	
+
+	public void calculeIncome(double income) {
+    	this.income += income;
     }
+	
+	public String toString(){
+		return "Name: "
+		+ name
+		+ "Email: "
+		+ email
+		+ "Income: "
+		+ income;
+		
+	}
     
 }

@@ -6,16 +6,12 @@ public class Category {
 	
 	private String categoryName;
 	private String categoryRegister;
-	private List<Expense> expenses;
+	private List<Expense> expenses; //lista despesa
 	
-	public void registerOfExpense(){
-		
+	public Category () { //metodo construtor vazio
+	
 	}
 	
-	public void removeExpense(){
-		
-	}
-
 	public String getCategoryName() {
 		return categoryName;
 	}
@@ -40,5 +36,19 @@ public class Category {
 		this.expenses = expenses;
 	}
 	
+	//metodos
+	public void registerOfExpense(Expense e){
+		expenses.add(e);
+		
+	}
+	
+	public void removeExpense(Expense e){ //qualquer coisa mudar pra int index
+		expenses.remove(e);
+	}
+
+	@Override //polimorfismo
+    public String toString() {
+        return "Categoria [nome=" + categoryName + ", registro=" + categoryRegister + "]";
+    }
 
 }
