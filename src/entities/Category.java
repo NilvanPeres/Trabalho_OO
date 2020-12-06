@@ -8,6 +8,13 @@ public class Category {
 	private String categoryRegister;
 	private List<Expense> expenses; //lista despesa
 	
+	
+
+	public Category(String categoryName, String categoryRegister) {
+		this.categoryName = categoryName;
+		this.categoryRegister = categoryRegister;
+	}
+
 	public Category (String categoryName) { //metodo construtor vazio
 		this.categoryName = categoryName;
 	}

@@ -2,6 +2,11 @@ package entities;
 
 public class SubCategory extends Category{
 
+	public SubCategory(String categoryName) {
+		super(categoryName);
+	}
+
+
 	private String subCategoryName;
 	
 	public String getSubCategoryName() {

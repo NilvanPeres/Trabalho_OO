@@ -1,6 +1,9 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import exceptions.CategoriaNaoEncontradaException;
 import exceptions.DespesaSemCategoriaException;
@@ -28,14 +31,14 @@ public class Register {
 				list = i;
 				found = true;
 				
-			}
+			}}
 		}
 	
 	public boolean validateName(JTextField name) {
 		String name;
 		name = keyboard.nextLine();
 		if (!name.matches("[a-zA-Z_]+")) {
-			JOptionPane.showMessageDialog(null, "Invalid name! Digite apenas letras para os números");
+			JOptionPane.showMessageDialog(null, "Invalid name! Digite apenas letras para os nï¿½meros");
 			
 		}
 	}
@@ -45,7 +48,7 @@ public class Register {
 	}
 	
 	public void registerCategory(Category c) {
-		categories.add(c)
+		categories.add(c);
 	}
 	
 	public int getsizeCategory(){
@@ -55,8 +58,8 @@ public class Register {
     public boolean removeCategoria(String categoryName) {
         int list = 0;
         boolean found = false;
-        for(int i = 0; i < categorias.size(); i++) {
-            if(categories.get(i).getcategoryName().equals(categoryName)) {
+        for(int i = 0; i < categories.size(); i++) {
+            if(categories.get(i).getCategoryName().equals(categoryName)) {
                 list = i;
                 found = true;
             }
@@ -71,25 +74,25 @@ public class Register {
     }
     
     public boolean categoriesIsEmpty() {
-        return categorias.isEmpty();
+        return categories.isEmpty();
     }
     
     public void registerExpense(String categoryName, Expense e) {
     	int list = 0;
     	boolean found = false;
     	for (int i = 0; i<categories.size(); i++) {
-    		if (categories.get(i).getcategoryName().equals(categoryName)) {
+    		if (categories.get(i).getCategoryName().equals(categoryName)) {
     			list = i;
     			found = true;
     		}
     	}
         
         if(categories.isEmpty()) {
-            throw new DespesaSemCategoriaException("Você precisa adicionar uma Categoria antes!");
+            throw new DespesaSemCategoriaException("Vocï¿½ precisa adicionar uma Categoria antes!");
         } 
         
         else if(!found) {
-            throw new CategoriaNaoEncontradaException("Não tem nenhuma categoria com essse nome!");
+            throw new CategoriaNaoEncontradaException("Nï¿½o tem nenhuma categoria com essse nome!");
         }
         
         else {
