@@ -5,8 +5,10 @@ public class Expense {
     private int month;
     private int year;
     
-    public Expense() {
-
+    public Expense(double expense, int month, int year) {
+    		this.expense = expense;
+    		this.month = month;
+    		this.year = year;
 	}
 
 	public double getExpense() {
