@@ -4,11 +4,14 @@ public class Expense {
 	private double expense;
     private int month;
     private int year;
+    private String description;
+   
     
-    public Expense(double expense, int month, int year) {
-    		this.expense = expense;
-    		this.month = month;
-    		this.year = year;
+    public Expense(String description, double expense, int month, int year) {
+    	this.description = description;
+    	this.expense = expense;
+    	this.month = month;
+    	this.year = year; 	
 	}
 
 	public double getExpense() {

@@ -1,14 +1,14 @@
-package entities;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
+
+import javax.swing.JOptionPane;
+
+import exceptions.CategoriaNaoEncontradaException;
+import exceptions.DespesaSemCategoriaException;
 
 public class Register {
 
 	private List<Category> categories; // new ArrayList<Category>();
 	private List<Student> students;
-	int i;
 	
 	
 	public Register() {
@@ -18,10 +18,6 @@ public class Register {
 	
 	public void registerStudent(Student s) {
 		students.add(s);
-	}
-	
-	public int getNumberStudents(){
-		return students.size();
 	}
 	
 	public boolean removeStudent(String name){
@@ -34,17 +30,81 @@ public class Register {
 				
 			}
 		}
-			
-		if(found) {
-			students.remove(list);
-			return true;
-		}else {
-			return false;
-		}
-		}
-		
 	
-		public Double calculeIncomes(List<Student> students){ //calcula a renda mensal dos estudantes
+	public boolean validateName(JTextField name) {
+		String name;
+		name = keyboard.nextLine();
+		if (!name.matches("[a-zA-Z_]+")) {
+			JOptionPane.showMessageDialog(null, "Invalid name! Digite apenas letras para os números");
+			
+		}
+	}
+	
+	public int getNumberStudents(){
+		return students.size();
+	}
+	
+	public void registerCategory(Category c) {
+		categories.add(c)
+	}
+	
+	public int getsizeCategory(){
+		return categories.size();
+	}
+	
+    public boolean removeCategoria(String categoryName) {
+        int list = 0;
+        boolean found = false;
+        for(int i = 0; i < categorias.size(); i++) {
+            if(categories.get(i).getcategoryName().equals(categoryName)) {
+                list = i;
+                found = true;
+            }
+        }
+        
+        if(found) {
+            categories.remove(list);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public boolean categoriesIsEmpty() {
+        return categorias.isEmpty();
+    }
+    
+    public void registerExpense(String categoryName, Expense e) {
+    	int list = 0;
+    	boolean found = false;
+    	for (int i = 0; i<categories.size(); i++) {
+    		if (categories.get(i).getcategoryName().equals(categoryName)) {
+    			list = i;
+    			found = true;
+    		}
+    	}
+        
+        if(categories.isEmpty()) {
+            throw new DespesaSemCategoriaException("Você precisa adicionar uma Categoria antes!");
+        } 
+        
+        else if(!found) {
+            throw new CategoriaNaoEncontradaException("Não tem nenhuma categoria com essse nome!");
+        }
+        
+        else {
+            categorias.get(i).cadastrarDespesa(d);
+        }
+    		
+    }
+    	
+    
+    
+    
+    
+	
+
+	public Double calculeIncomes(List<Student> students){ //calcula a renda mensal dos estudantes
 		Double total = 0.0;
 		students.forEach( Student -> total += Student.getincome());
 
@@ -63,12 +123,9 @@ public class Register {
 		return total;
 	}
 	public void ReportStudent() {
-		int size = students.size();{
-		for(int i =0; i < size; i ++) {
-			System.out.println(students.get(i).getName());
+		int size = students.size(){
+			System.out.println(students.get(i).getName);
 		}
 	}
-	}
+
 }
-
-
