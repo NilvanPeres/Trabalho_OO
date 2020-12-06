@@ -5,18 +5,20 @@ import java.util.Optional;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import exceptions.CategoriaNaoEncontradaException;
-import exceptions.DespesaSemCategoriaException;
+import exceptions.NoCategoryFoundException;
+import exceptions.NoCategoryInExpenseException;
 
 public class Register {
 
 	private List<Category> categories; // new ArrayList<Category>();
 	private List<Student> students;
+	private int i;
 	
 	
 	public Register() {
 		this.students = new ArrayList <>();
 		this.categories = new ArrayList <>();
+		
 	}
 	
 	public void registerStudent(Student s) {
@@ -88,28 +90,22 @@ public class Register {
     	}
         
         if(categories.isEmpty()) {
-            throw new DespesaSemCategoriaException("Voc� precisa adicionar uma Categoria antes!");
+            throw new NoCategoryInExpenseException("Voc� precisa adicionar uma Categoria antes!");
         } 
         
         else if(!found) {
-            throw new CategoriaNaoEncontradaException("N�o tem nenhuma categoria com essse nome!");
+            throw new NoCategoryFoundException("N�o tem nenhuma categoria com essse nome!");
         }
         
         else {
-            categorias.get(i).cadastrarDespesa(d);
+            categories.get(i).registerOfExpense(e);
         }
     		
     }
     	
-    
-    
-    
-    
-	
-
-	public Double calculeIncomes(List<Student> students){ //calcula a renda mensal dos estudantes
+    public Double calculeIncomes(List<Student> students){ //calcula a renda mensal dos estudantes
 		Double total = 0.0;
-		students.forEach( Student -> total += Student.getincome());
+		students.forEach( Student -> total += Student.getIncome());
 
 		return total;
 	}
@@ -120,14 +116,14 @@ public class Register {
 									.stream()
 									.filter( category -> categoryName.equalsIgnoreCase(category.getCategoryName())).findFirst();
 		if(finded.isPresent()){
-			finded.get().getExpenses().forEach( expense -> total += expense.getexpense());
+			finded.get().getExpenses().forEach( expense -> total += expense.getExpense());
 		}
 
 		return total;
 	}
 	public void ReportStudent() {
-		int size = students.size(){
-			System.out.println(students.get(i).getName);
+		int size = students.size();{
+			System.out.println(students.get(i).getName());
 		}
 	}
 
