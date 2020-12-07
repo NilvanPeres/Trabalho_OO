@@ -51,6 +51,7 @@ public class Program {
 				}catch(RendimentoInvalidoException error)
 	            {
 					JOptionPane.showMessageDialog(null, "Não pode cadastrar renda negativa, RendimentoInvalidoException");
+					register.getStudents().forEach(s -> System.out.println(s));
 					break;
 	            }
 				
@@ -79,7 +80,7 @@ public class Program {
 		} while (opInt != 4);
 		System.out.println("saindo do menu");
 		
-		register.getStudents().forEach(s -> System.out.println(s));
+		
 		register.getCategories().forEach(c -> System.out.println(c));
 		register.getExpenses().forEach(e -> System.out.println(e));
 
@@ -95,7 +96,7 @@ public class Program {
 		// despesa.setYear(2020);
 		// despesa.setMonth(12);
 
-		List<Expense> expenseNovembro2020 = new ArrayList<>();
+		/*List<Expense> expenseNovembro2020 = new ArrayList<>();
 
 		// for(Expense e : expenses){
 		// if(e.getMonth() == 11 && e.getYear() == 2020){
@@ -107,7 +108,7 @@ public class Program {
 		// expenseNovembro2020.forEach(e -> custoNovembro2020 += e.getExpense());
 
 		int soma;
-		
+		*/
 
 		/*
 		 * -------------------------------Sugestão para implementar uma interface

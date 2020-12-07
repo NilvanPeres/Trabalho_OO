@@ -7,15 +7,17 @@ public class Expense {
     private String description;
    
     
-    public Expense(String description, double account, int month, int year) {
+    /*public Expense(String description, double account, int month, int year) {
     	this.description = description;
     	this.account = account;
     	this.month = month;
     	this.year = year; 	
 	}
-
+    */
 	public Expense(String description, Double account) {
 		// TODO Auto-generated constructor stub
+		this.description = description;
+    	this.account = account;
 	}
 
 	public double getAccount() {
@@ -53,7 +55,7 @@ public class Expense {
 	
 	@Override //polimorfismo
 	public String toString() {
-		return "Despesa [Nome Despesa=" + description + ", Valor=" + account + "]";
+		return "Expense [Nome Despesa=" + description + ", Valor=" + account + "]";
 	}
 	
 	
