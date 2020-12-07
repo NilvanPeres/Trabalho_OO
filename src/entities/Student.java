@@ -56,7 +56,7 @@ public class Student {
 		+ "Email: "
 		+ email
 		+ "Income: "
-		+ income;
+		+ calculeIncome(income);
 		
 	}
     

@@ -52,10 +52,10 @@ public class Category {
 	public void removeExpense(Expense e){ //qualquer coisa mudar pra int index
 		expenses.remove(e);
 	}
-
+	
+	
 	@Override //polimorfismo
     public String toString() {
         return "Categoria [nome=" + categoryName + ", registro=" + categoryRegister + "]";
     }
-
 }
