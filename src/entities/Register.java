@@ -21,8 +21,11 @@ public class Register {
 		this.expenses = new ArrayList<Expense>();
 	}
 	
+<<<<<<< HEAD
 	
 	
+=======
+>>>>>>> 0dd4dce9280f60c60162385aa7f446e976517e74
 	/* public void registerStudent(Student s) {
 		students.add(s);
 	}
@@ -91,11 +94,11 @@ public class Register {
     	}
         
         if(categories.isEmpty()) {
-            throw new NoCategoryInExpenseException("Vocï¿½ precisa adicionar uma Categoria antes!");
+            throw new NoCategoryInExpenseException("Voce precisa adicionar uma Categoria antes!");
         } 
         
         else if(!found) {
-            throw new NoCategoryFoundException("Nï¿½o tem nenhuma categoria com essse nome!");
+            throw new NoCategoryFoundException("Não tem nenhuma categoria com essse nome!");
         }
         
         else {
@@ -105,6 +108,7 @@ public class Register {
     }
     */
 	
+<<<<<<< HEAD
 	public void add(Student s) {
 		this.students.add(s);
 	}
@@ -112,6 +116,13 @@ public class Register {
 	public List<Category> getCategories() {
 		return categories;
 	}
+=======
+    public Double calculateIncomes(){ //calcula a renda mensal dos estudantes
+		Double total = 0.0;
+		for(Student s : students) {
+			total += s.getIncome();
+		}
+>>>>>>> 0dd4dce9280f60c60162385aa7f446e976517e74
 
 
 
@@ -124,6 +135,7 @@ public class Register {
 	public List<Expense> getExpenses() {
 		return expenses;
 	}
+<<<<<<< HEAD
 
 
 
@@ -139,8 +151,24 @@ public class Register {
 		Double total = 0.0;
 		for(Student s : students) {
 			total += s.getIncome();
+=======
+    
+    public String toString() {
+		StringBuilder sb = new StringBuilder();
+		for(Student s : students) {
+			s.getName();
+			s.getEmail();
+			s.getIncome();
+>>>>>>> 0dd4dce9280f60c60162385aa7f446e976517e74
 		}
+     for(Category c : categories) {
+    		c.getCategoryName();
+    		c.getCategoryRegister();
+    	}
+     return sb.toString();
+    }
 
+<<<<<<< HEAD
 		return total;
 	}
     
@@ -155,13 +183,18 @@ public class Register {
     
     
 
+=======
+>>>>>>> 0dd4dce9280f60c60162385aa7f446e976517e74
 	/* public void ReportStudent() {
 		int size = students.size();{
 			  for(int i = 0; i < size; i++) {
 			System.out.println(students.get(i).getName());
 		}
 	} */
+<<<<<<< HEAD
     
     
+=======
+>>>>>>> 0dd4dce9280f60c60162385aa7f446e976517e74
 
 }
