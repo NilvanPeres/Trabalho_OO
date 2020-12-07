@@ -1,25 +1,25 @@
 package entities;
 
 public class Expense { 
-	private double expense;
+	private double account;
     private int month;
     private int year;
     private String description;
    
     
-    public Expense(String description, double expense, int month, int year) {
+    public Expense(String description, double account, int month, int year) {
     	this.description = description;
-    	this.expense = expense;
+    	this.account = account;
     	this.month = month;
     	this.year = year; 	
 	}
 
-	public double getExpense() {
-		return expense;
+	public double getAccount() {
+		return account;
 	}
 
-	public void setExpense(double expense) {
-		this.expense = expense;
+	public void setAccount(double account) {
+		this.account = account;
 	}
 
 	public int getMonth() {
@@ -37,7 +37,16 @@ public class Expense {
 	public void setYear(int year) {
 		this.year = year;
 	}
+	
+	public void addExpense(double account) {
+		this.account += account;
+	}
+	
+	public void removeExpense(double account) {
+		this.account -= account;
+	}
     
-    
-
+	public double calculeExpense(){ //calcula a renda mensal dos estudantes	
+	return month * account;
+	}
 }

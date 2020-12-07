@@ -40,6 +40,7 @@ public class Category {
 	}
 
 	public void setExpenses(List<Expense> expenses) {
+		 
 		this.expenses = expenses;
 	}
 	

@@ -20,7 +20,7 @@ public class Register {
 		
 	}
 	
-	public void registerStudent(Student s) {
+	/* public void registerStudent(Student s) {
 		students.add(s);
 	}
 	
@@ -88,11 +88,11 @@ public class Register {
     	}
         
         if(categories.isEmpty()) {
-            throw new NoCategoryInExpenseException("Vocï¿½ precisa adicionar uma Categoria antes!");
+            throw new NoCategoryInExpenseException("Voce precisa adicionar uma Categoria antes!");
         } 
         
         else if(!found) {
-            throw new NoCategoryFoundException("Nï¿½o tem nenhuma categoria com essse nome!");
+            throw new NoCategoryFoundException("Não tem nenhuma categoria com essse nome!");
         }
         
         else {
@@ -100,33 +100,36 @@ public class Register {
         }
     		
     }
-    
-	/*
-    public Double calculeIncomes(List<Student> students){ //calcula a renda mensal dos estudantes
+    */
+	
+    public Double calculateIncomes(){ //calcula a renda mensal dos estudantes
 		Double total = 0.0;
-		students.forEach( Student -> total += Student.getIncome());
-
-		return total;
-	}
-
-	public Double getCostByCategoryName(String categoryName){
-		Double total = 0.0;
-		Optional<Category> finded = categories
-									.stream()
-									.filter( category -> categoryName.equalsIgnoreCase(category.getCategoryName())).findFirst();
-		if(finded.isPresent()){
-			finded.get().getExpenses().forEach( expense -> total += expense.getExpense());
+		for(Student s : students) {
+			total += s.getIncome();
 		}
 
 		return total;
 	}
-	*/
-	public void ReportStudent() {
+    
+    public String toString() {
+		StringBuilder sb = new StringBuilder();
+		for(Student s : students) {
+			s.getName();
+			s.getEmail();
+			s.getIncome();
+		}
+     for(Category c : categories) {
+    		c.getCategoryName();
+    		c.getCategoryRegister();
+    	}
+     return sb.toString();
+    }
+
+	/* public void ReportStudent() {
 		int size = students.size();{
 			  for(int i = 0; i < size; i++) {
 			System.out.println(students.get(i).getName());
 		}
-	}
+	} */
 
-}
 }
