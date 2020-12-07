@@ -21,9 +21,6 @@ public class Student {
 
 
 	public void setName(String name) {
-		if ((name.length() < 3) ||(name.length() > 20 || name == null ) ) {
-			   throw new IllegalArgumentException("Nome Invalido. Minimo de 3 caracteres  e maximo de 20");
-		}else
 		this.name = name;
 	}
 
@@ -50,14 +47,65 @@ public class Student {
     	this.income += income;
     }
 	
-	public String toString(){
+	
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(income);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Student other = (Student) obj;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (Double.doubleToLongBits(income) != Double.doubleToLongBits(other.income))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
+
+
+
+	public String toString2(){
 		return "Name: "
 		+ name
 		+ "Email: "
 		+ email
 		+ "Income: "
-		+ calculeIncome(income);
+		+ income;
 		
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "Student [name=" + name + ", email=" + email + ", income=" + income + "]";
+	}
+	
+	
     
 }

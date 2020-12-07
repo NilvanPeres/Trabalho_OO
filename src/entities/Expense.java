@@ -37,8 +37,16 @@ public class Expense {
 	public void setYear(int year) {
 		this.year = year;
 	}
+	
+	public void addExpense(double account) {
+		this.account += account;
+	}
+	
+	public void removeExpense(double account) {
+		this.account -= account;
+	}
     
-	public Double calculeExpense(){ //calcula a renda mensal dos estudantes	
+	public double calculeExpense(){ //calcula a renda mensal dos estudantes	
 	return month * account;
 	}
 }

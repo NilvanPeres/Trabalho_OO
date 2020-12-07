@@ -11,16 +11,19 @@ public class Register {
 
 	private List<Category> categories; // new ArrayList<Category>();
 	private List<Student> students;
-	private int i;
+	private List<Expense> expenses;
+
 	
 	
 	public Register() {
 		this.students = new ArrayList <>();
 		this.categories = new ArrayList <>();
-		
+		this.expenses = new ArrayList<Expense>();
 	}
 	
-	public void registerStudent(Student s) {
+	
+	
+	/* public void registerStudent(Student s) {
 		students.add(s);
 	}
 	
@@ -100,33 +103,65 @@ public class Register {
         }
     		
     }
-    
-	/*
-    public Double calculeIncomes(List<Student> students){ //calcula a renda mensal dos estudantes
-		Double total = 0.0;
-		students.forEach( Student -> total += Student.getIncome());
-
-		return total;
+    */
+	
+	public void add(Student s) {
+		this.students.add(s);
+	}
+	
+	public List<Category> getCategories() {
+		return categories;
 	}
 
-	public Double getCostByCategoryName(String categoryName){
+
+
+	public List<Student> getStudents() {
+		return students;
+	}
+
+
+
+	public List<Expense> getExpenses() {
+		return expenses;
+	}
+
+
+
+	public void add(Category c) {
+		this.categories.add(c);
+	}
+	
+	public void add(Expense e) {
+		this.expenses.add(e);
+	}
+	
+    public Double calculateIncomes(){ //calcula a renda mensal dos estudantes
 		Double total = 0.0;
-		Optional<Category> finded = categories
-									.stream()
-									.filter( category -> categoryName.equalsIgnoreCase(category.getCategoryName())).findFirst();
-		if(finded.isPresent()){
-			finded.get().getExpenses().forEach( expense -> total += expense.getExpense());
+		for(Student s : students) {
+			total += s.getIncome();
 		}
 
 		return total;
 	}
-	*/
-	public void ReportStudent() {
+    
+    public void removeStudent(Student student) {
+    	this.students.remove(student);
+    }
+
+	@Override
+	public String toString() {
+		return "Register [categories=" + categories + ", students=" + students + "]";
+	}
+    
+    
+
+	/* public void ReportStudent() {
 		int size = students.size();{
 			  for(int i = 0; i < size; i++) {
 			System.out.println(students.get(i).getName());
 		}
-	}
+	} */
+    
+    
 
-}
 }
