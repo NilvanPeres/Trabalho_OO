@@ -1,11 +1,10 @@
 package exceptions;
 
 public class NoCategoryFoundException  extends RuntimeException {
-    public NoCategoryFoundException() {
-        super();
-    }
     
-    public NoCategoryFoundException(String msg) {
+	private static final long serialVersionUID = 1L;
+
+	public NoCategoryFoundException(String msg) {
         super(msg);
     }
 }

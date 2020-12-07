@@ -46,7 +46,11 @@ public class Expense {
 		this.account -= account;
 	}
     
+<<<<<<< HEAD
 	public double calculeExpense(){ //calcula a renda mensal dos estudantes	
+=======
+	public Double calculeExpense(){ //calcula a renda mensal dos estudantes	
+>>>>>>> fe9363254e7dc8ce7e8cf8bc4344116d5f0472e6
 	return month * account;
 	}
 }
