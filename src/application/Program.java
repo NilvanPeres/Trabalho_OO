@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import entities.Expense;
 import entities.Register;
 import entities.Student;
+import entities.Category;
 
 public class Program {
 
@@ -50,12 +51,16 @@ public class Program {
 
 			case 2:
 				String nomeCategoria = JOptionPane.showInputDialog(null, "Digite o nome da categoria: ");
+				Category c = new Category(nomeCategoria);
+				register.add(c);
 				break;
 
 			case 3:
 				String nomeDespesa = JOptionPane.showInputDialog(null, "Digite o nome da despesa");
 				String valorDespesa = JOptionPane.showInputDialog(null, "Digite o valor da despesa");
 				Integer valorDespesaInt = Integer.parseInt(valorDespesa);
+				Expense e = new Expense(nomeDespesa, valorDespesaInt);
+				register.add(e);
 				break;
 
 			}
@@ -63,6 +68,10 @@ public class Program {
 		} while (opInt != 4);
 		System.out.println("saindo do menu");
 		register.getStudents().forEach(s -> System.out.println(s));
+		register.getCategories().forEach(c -> System.out.println(c));
+
+
+		
 		//register.removeStudent(student);
 
 		// List<Expense> expenses = new ArrayList<>();
@@ -88,7 +97,7 @@ public class Program {
 		
 
 		/*
-		 * -------------------------------Sugest√£o para implementar uma interface
+		 * -------------------------------Sugest„o para implementar uma interface
 		 * simples-------------------------------
 		 * 
 		 * String one =

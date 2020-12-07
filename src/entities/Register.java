@@ -21,11 +21,7 @@ public class Register {
 		this.expenses = new ArrayList<Expense>();
 	}
 	
-<<<<<<< HEAD
-	
-	
-=======
->>>>>>> 0dd4dce9280f60c60162385aa7f446e976517e74
+
 	/* public void registerStudent(Student s) {
 		students.add(s);
 	}
@@ -108,68 +104,58 @@ public class Register {
     }
     */
 	
-<<<<<<< HEAD
+
 	public void add(Student s) {
 		this.students.add(s);
 	}
 	
+
 	public List<Category> getCategories() {
 		return categories;
 	}
-=======
-    public Double calculateIncomes(){ //calcula a renda mensal dos estudantes
-		Double total = 0.0;
-		for(Student s : students) {
-			total += s.getIncome();
-		}
->>>>>>> 0dd4dce9280f60c60162385aa7f446e976517e74
-
-
-
+	
 	public List<Student> getStudents() {
 		return students;
 	}
-
+	
+	public void add(Category c) {
+		this.categories.add(c);
+	}
 
 
 	public List<Expense> getExpenses() {
 		return expenses;
 	}
-<<<<<<< HEAD
-
-
-
-	public void add(Category c) {
-		this.categories.add(c);
-	}
+	
 	
 	public void add(Expense e) {
 		this.expenses.add(e);
 	}
-	
-    public Double calculateIncomes(){ //calcula a renda mensal dos estudantes
+	 
+	public Double calculateIncomes(){ //calcula a renda mensal dos estudantes
 		Double total = 0.0;
 		for(Student s : students) {
 			total += s.getIncome();
-=======
-    
-    public String toString() {
-		StringBuilder sb = new StringBuilder();
-		for(Student s : students) {
-			s.getName();
-			s.getEmail();
-			s.getIncome();
->>>>>>> 0dd4dce9280f60c60162385aa7f446e976517e74
+			
 		}
-     for(Category c : categories) {
-    		c.getCategoryName();
-    		c.getCategoryRegister();
-    	}
-     return sb.toString();
-    }
-
-<<<<<<< HEAD
 		return total;
+	}
+			
+	public String toString1() {
+			StringBuilder sb = new StringBuilder();
+			for(Student s : students) {
+				s.getName();
+				s.getEmail();
+				s.getIncome();
+		for(Category c : categories) {
+		    		c.getCategoryName();
+		    		c.getCategoryRegister();
+		    	}
+		     return sb.toString();
+		    }
+			return null;
+			
+			
 	}
     
     public void removeStudent(Student student) {
@@ -180,21 +166,12 @@ public class Register {
 	public String toString() {
 		return "Register [categories=" + categories + ", students=" + students + "]";
 	}
-    
-    
-
-=======
->>>>>>> 0dd4dce9280f60c60162385aa7f446e976517e74
+	
+	
 	/* public void ReportStudent() {
-		int size = students.size();{
-			  for(int i = 0; i < size; i++) {
-			System.out.println(students.get(i).getName());
-		}
-	} */
-<<<<<<< HEAD
-    
-    
-=======
->>>>>>> 0dd4dce9280f60c60162385aa7f446e976517e74
-
-}
+	int size = students.size();{
+		  for(int i = 0; i < size; i++) {
+		System.out.println(students.get(i).getName());
+	}
+	*/
+} 

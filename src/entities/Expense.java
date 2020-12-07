@@ -14,6 +14,10 @@ public class Expense {
     	this.year = year; 	
 	}
 
+	public Expense(String nomeDespesa, Integer valorDespesaInt) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public double getAccount() {
 		return account;
 	}
@@ -45,16 +49,9 @@ public class Expense {
 	public void removeExpense(double account) {
 		this.account -= account;
 	}
-    
-<<<<<<< HEAD
+	
 	public double calculeExpense(){ //calcula a renda mensal dos estudantes	
-=======
-<<<<<<< HEAD
-	public double calculeExpense(){ //calcula a renda mensal dos estudantes	
-=======
-	public Double calculeExpense(){ //calcula a renda mensal dos estudantes	
->>>>>>> fe9363254e7dc8ce7e8cf8bc4344116d5f0472e6
->>>>>>> 0dd4dce9280f60c60162385aa7f446e976517e74
-	return month * account;
-	}
+
+		return month * account;
+		}
 }
