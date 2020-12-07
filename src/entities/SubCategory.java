@@ -1,14 +1,24 @@
+/**
+ * Trabalho de Orientacao a Objetos 
+ * Feito por: Ana Julia 
+ *            Davi Matheus
+ *            Lais Portela
+ *            Lucas Rodrigues
+ *            Nilvan Junior
+ */
 package entities;
 
 public class SubCategory extends Category{
 
+	// Atributo
+	private String subCategoryName; // nome da subcategoria
+	
+	// Construtor
 	public SubCategory(String categoryName) {
 		super(categoryName);
 	}
-
-
-	private String subCategoryName;
 	
+	// Metodos gets e sets
 	public String getSubCategoryName() {
 		return subCategoryName;
 	}
@@ -17,8 +27,8 @@ public class SubCategory extends Category{
 		this.subCategoryName = subCategoryName;
 	}
 
-	
-    @Override //polimorfismo (?)
+	// Polimorfismo
+    @Override
     public String toString() {
         return "SubCategory [subCategoryName=" + subCategoryName +"" +super.toString()+ "]";
     }

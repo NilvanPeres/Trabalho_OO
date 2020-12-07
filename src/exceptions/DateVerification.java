@@ -1,10 +1,19 @@
+/**
+ * Trabalho de Orientacao a Objetos 
+ * Feito por: Ana Julia 
+ *            Davi Matheus
+ *            Lais Portela
+ *            Lucas Rodrigues
+ *            Nilvan Junior
+ */
 package exceptions;
 
 public class DateVerification {
 	
 	private int month, year;
 	
-	// construtor
+	// Construtor
+	// Excecao para quando a data for invalida
 	public DateVerification(int mes, int ano) {
 		 
 		if (month<=12 && month>0)

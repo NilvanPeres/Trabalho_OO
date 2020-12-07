@@ -1,3 +1,11 @@
+/**
+ * Trabalho de Orientacao a Objetos 
+ * Feito por: Ana Julia 
+ *            Davi Matheus
+ *            Lais Portela
+ *            Lucas Rodrigues
+ *            Nilvan Junior
+ */
 package entities;
 
 import java.util.ArrayList;
@@ -16,16 +24,16 @@ public class Register {
 	
 	
 	public Register() {
-		this.students = new ArrayList <>();
-		this.categories = new ArrayList <>();
+		this.students = new ArrayList <>(); //array list de estudantes
+		this.categories = new ArrayList <>(); // array list de categoria
 		this.expenses = new ArrayList<Expense>();
 	}
 	
 
 	/* public void registerStudent(Student s) {
-		students.add(s);
+		.add(s);
 	}
-	
+	students
 	public boolean removeStudent(String name){
 		int  list = 0;
 		boolean found = false;
@@ -42,7 +50,7 @@ public class Register {
         } else {
             return false;
         }
-    }
+    } 
 			
 		
 	public int getNumberStudents(){
@@ -94,7 +102,7 @@ public class Register {
         } 
         
         else if(!found) {
-            throw new NoCategoryFoundException("Não tem nenhuma categoria com essse nome!");
+            throw new NoCategoryFoundException("Nï¿½o tem nenhuma categoria com essse nome!");
         }
         
         else {
@@ -105,30 +113,29 @@ public class Register {
     */
 	
 
-	public void add(Student s) {
+	public void add(Student s) { //Metodo para adicionar estudante
 		this.students.add(s);
 	}
 	
 
-	public List<Category> getCategories() {
+	public List<Category> getCategories() { // get da lista de categoria
 		return categories;
 	}
 	
-	public List<Student> getStudents() {
+	public List<Student> getStudents() { // get da lista de estudantes
 		return students;
 	}
 	
-	public void add(Category c) {
-		this.categories.add(c);
-	}
-
-
-	public List<Expense> getExpenses() {
+	public List<Expense> getExpenses() { // get da lista de despesa
 		return expenses;
 	}
 	
+	public void add(Category c) { // adiciona categoria
+		this.categories.add(c);
+	}
 	
-	public void add(Expense e) {
+	
+	public void add(Expense e) { // adiciona despesa
 		this.expenses.add(e);
 	}
 	 
@@ -140,8 +147,9 @@ public class Register {
 		}
 		return total;
 	}
-			
-	public String toString1() {
+	
+	//Metodo toString
+	public String toString1() { 
 			StringBuilder sb = new StringBuilder();
 			for(Student s : students) {
 				s.getName();
@@ -158,10 +166,11 @@ public class Register {
 			
 	}
     
-    public void removeStudent(Student student) {
+    public void removeStudent(Student student) { // remove estudante
     	this.students.remove(student);
     }
-
+    
+    // Polimorfismo
 	@Override
 	public String toString() {
 		return "Register [categories=" + categories + ", students=" + students + "]";

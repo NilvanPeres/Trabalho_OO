@@ -1,24 +1,28 @@
+/**
+ * Trabalho de Orientacao a Objetos 
+ * Feito por: Ana Julia 
+ *            Davi Matheus
+ *            Lais Portela
+ *            Lucas Rodrigues
+ *            Nilvan Junior
+ */
 package entities;
 
 import java.util.List;
 
 public class Category {
 	
-	private String categoryName;
-	private String categoryRegister;
+	private String categoryName; // string para definir nome da categoria
+	private String categoryRegister; // string para registrar a categoria
 	private List<Expense> expenses; //lista despesa
 	
 	
-
-	public Category(String categoryName, String categoryRegister) {
-		this.categoryName = categoryName;
-		this.categoryRegister = categoryRegister;
-	}
-
-	public Category (String categoryName) { //metodo construtor vazio
+	//Construtor 
+	public Category (String categoryName) { 
 		this.categoryName = categoryName;
 	}
 	
+	//Metodos gets e sets
 	public String getCategoryName() {
 		return categoryName;
 	}
@@ -35,27 +39,27 @@ public class Category {
 		this.categoryRegister = categoryRegister;
 	}
 
-	public List<Expense> getExpenses() {
+	public List<Expense> getExpenses() { // get da lista de despesas
 		return expenses;
 	}
 
-	public void setExpenses(List<Expense> expenses) {
-		 
+	public void setExpenses(List<Expense> expenses) { // set da lista de despesas
 		this.expenses = expenses;
 	}
 	
-	//metodos
-	public void registerOfExpense(Expense e){
+	//Metodos
+	public void registerOfExpense(Expense e){ // para registrar despesa
 		expenses.add(e);
 		
 	}
 	
-	public void removeExpense(Expense e){ //qualquer coisa mudar pra int index
+	public void removeExpense(Expense e){ // para remover despesa
 		expenses.remove(e);
 	}
 	
 	
-	@Override //polimorfismo
+	//Polimorfismo
+	@Override 
     public String toString() {
         return "Categoria [nome=" + categoryName + ", registro=" + categoryRegister + "]";
     }

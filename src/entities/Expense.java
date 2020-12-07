@@ -1,12 +1,22 @@
+/**
+ * Trabalho de Orientacao a Objetos 
+ * Feito por: Ana Julia 
+ *            Davi Matheus
+ *            Lais Portela
+ *            Lucas Rodrigues
+ *            Nilvan Junior
+ */
 package entities;
 
 public class Expense { 
-	private double account;
-    private int month;
-    private int year;
-    private String description;
+	
+	// Atributos
+	private double account;     //valor da conta
+    private int month;          // mes
+    private int year;	        // ano
+    private String description; //descricao da despesa
    
-    
+    // Construtor
     public Expense(String description, double account, int month, int year) {
     	this.description = description;
     	this.account = account;
@@ -15,9 +25,9 @@ public class Expense {
 	}
 
 	public Expense(String nomeDespesa, Integer valorDespesaInt) {
-		// TODO Auto-generated constructor stub
 	}
 
+	//Metodos gets e sets
 	public double getAccount() {
 		return account;
 	}
@@ -42,16 +52,17 @@ public class Expense {
 		this.year = year;
 	}
 	
-	public void addExpense(double account) {
+	// Metodos da lista
+	public void addExpense(double account) { // adiciona despesa
 		this.account += account;
 	}
 	
-	public void removeExpense(double account) {
+	public void removeExpense(double account) { //remove despesa
 		this.account -= account;
 	}
 	
+	
 	public double calculeExpense(){ //calcula a renda mensal dos estudantes	
-
 		return month * account;
 		}
 }

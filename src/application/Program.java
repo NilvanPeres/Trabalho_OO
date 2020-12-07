@@ -1,3 +1,11 @@
+/**
+ * Trabalho de Orientacao a Objetos 
+ * Feito por: Ana Julia 
+ *            Davi Matheus
+ *            Lais Portela
+ *            Lucas Rodrigues
+ *            Nilvan Junior
+ */
 package application;
 
 import java.util.ArrayList;
@@ -17,7 +25,7 @@ public class Program {
 		Register register = new Register();
 
 
-		// menu
+		// MENU
 
 		System.out.println("Menu description: ");
 
@@ -97,7 +105,7 @@ public class Program {
 		
 
 		/*
-		 * -------------------------------Sugestão para implementar uma interface
+		 * -------------------------------Sugestï¿½o para implementar uma interface
 		 * simples-------------------------------
 		 * 
 		 * String one =
