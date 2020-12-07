@@ -27,9 +27,7 @@ public class Category {
 		this.categoryName = categoryName;
 	}
 
-	public String getCategoryRegister() {
-		return categoryRegister;
-	}
+	
 
 	public void setCategoryRegister(String categoryRegister) {
 		this.categoryRegister = categoryRegister;
@@ -57,6 +55,14 @@ public class Category {
 	
 	@Override //polimorfismo
     public String toString() {
-        return "Categoria [nome=" + categoryName + ", registro=" + categoryRegister + "]";
+        return "Categoria [nome=" + categoryName + "]";
     }
+	
+	
+
+	public String getCategoryRegister() {
+		return categoryRegister;
+		
+	}
+
 }

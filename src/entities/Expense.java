@@ -14,7 +14,7 @@ public class Expense {
     	this.year = year; 	
 	}
 
-	public Expense(String nomeDespesa, Integer valorDespesaInt) {
+	public Expense(String description, Double account) {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -49,6 +49,13 @@ public class Expense {
 	public void removeExpense(double account) {
 		this.account -= account;
 	}
+	
+	
+	@Override //polimorfismo
+	public String toString() {
+		return "Despesa [Nome Despesa=" + description + ", Valor=" + account + "]";
+	}
+	
 	
 	public double calculeExpense(){ //calcula a renda mensal dos estudantes	
 
