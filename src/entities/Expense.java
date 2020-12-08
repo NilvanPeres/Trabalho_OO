@@ -62,6 +62,12 @@ public class Expense {
 	}
 	
 	
+	
+	@Override //polimorfismo
+	public String toString() {
+		return "Expense [Nome Despesa=" + description + ", Valor=" + account + "]";
+	}
+	
 	public double calculeExpense(){ //calcula a renda mensal dos estudantes	
 		return month * account;
 		}
