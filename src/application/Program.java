@@ -16,8 +16,8 @@ import javax.swing.JOptionPane;
 import entities.Expense;
 import entities.Register;
 import entities.Student;
-import exceptions.NoCategoryFoundException;
 import exceptions.NoCategoryInExpenseException;
+import exceptions.NoRegisterFoundException;
 import exceptions.RendimentoInvalidoException;
 import entities.Category;
 
@@ -65,8 +65,21 @@ public class Program {
 				}
 
 				Student s = new Student(nomeEstudante, emailEstudante, income);
-				register.add(s);
-				JOptionPane.showMessageDialog(null, "Cadastro de Estudante Concluido com sucesso");
+				
+				try {
+					if (nomeEstudante.isEmpty() || emailEstudante.isEmpty() || renda.isEmpty()) {
+						throw new NoRegisterFoundException("Registros em Branco");
+
+					}
+					
+					register.add(s);
+					JOptionPane.showMessageDialog(null, "Cadastro de Estudante Concluido com sucesso");
+
+				} catch (Exception e) {
+					JOptionPane.showMessageDialog(null, "Coloque os dados corretos!!!");
+
+				}
+				
 
 				break;
 
@@ -76,7 +89,8 @@ public class Program {
 
 				try {
 					if (nomeCategoria.isEmpty()) {
-						throw new NoCategoryFoundException("Categoria em branco");
+						throw new NoRegisterFoundException("Categoria em branco");
+
 
 					}
 					
@@ -94,7 +108,20 @@ public class Program {
 				String valorDespesa = JOptionPane.showInputDialog(null, "Digite o valor da despesa");
 				Double valorDespesaInt = Double.valueOf(valorDespesa);
 				Expense e = new Expense(description, valorDespesaInt, opInt, opInt);
-				register.add(e);
+				
+				try {
+					if (description.isEmpty()) {
+						throw new NoRegisterFoundException("Descrição em branco");
+					}
+					
+					register.add(e);
+					JOptionPane.showMessageDialog(null, "Cadastro de despesa Concluido com sucesso");
+
+				} catch (Exception d) {
+					JOptionPane.showMessageDialog(null, "Coloque uma descriçaõ para cadastro!!!");
+
+				}
+				
 				break;
 
 			}

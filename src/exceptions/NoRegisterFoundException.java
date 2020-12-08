@@ -8,12 +8,12 @@
  */
 package exceptions;
 
-public class NoCategoryFoundException extends RuntimeException { //RuntimeException - biblioteca de Java
+public class NoRegisterFoundException extends RuntimeException { //RuntimeException - biblioteca de Java
     
 	private static final long serialVersionUID = 1L;
 	
 	//Excecao para quando nao achar categoria
-	public NoCategoryFoundException(String msg) {
+	public NoRegisterFoundException(String msg) {
         super(msg);
     }
 }
