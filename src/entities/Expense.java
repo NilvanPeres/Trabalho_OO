@@ -1,12 +1,7 @@
-/**
- * Trabalho de Orientacao a Objetos 
- * Feito por: Ana Julia 
- *            Davi Matheus
- *            Lais Portela
- *            Lucas Rodrigues
- *            Nilvan Junior
- */
+
 package entities;
+
+import exceptions.NoExpenseExceptions;
 
 public class Expense { 
 	
@@ -34,6 +29,9 @@ public class Expense {
 
 	public void setAccount(double account) {
 		this.account = account;
+		if(account < 0) {
+			throw new NoExpenseExceptions("Invalid account");
+		}
 	}
 
 	public int getMonth() {
@@ -42,14 +40,22 @@ public class Expense {
 
 	public void setMonth(int month) {
 		this.month = month;
+		 
+		if (month<=12 && month>0) {
+			throw new NoExpenseExceptions("Invalid month");
+		}
 	}
 
 	public int getYear() {
 		return year;
+		
 	}
 
 	public void setYear(int year) {
 		this.year = year;
+		if (year<=2020 && year>2015) {
+			throw new NoExpenseExceptions("Invalid year");
+		}
 	}
 	
 	// Metodos da lista

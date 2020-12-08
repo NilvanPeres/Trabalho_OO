@@ -1,11 +1,4 @@
-/**
- * Trabalho de Orientacao a Objetos 
- * Feito por: Ana Julia 
- *            Davi Matheus
- *            Lais Portela
- *            Lucas Rodrigues
- *            Nilvan Junior
- */
+
 package exceptions;
 
 public class NoCategoryFoundException extends RuntimeException { //RuntimeException - biblioteca de Java

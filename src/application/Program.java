@@ -1,10 +1,11 @@
 /**
- * Trabalho de Orientacao a Objetos 
- * Feito por: Ana Julia 
- *            Davi Matheus
- *            Lais Portela
- *            Lucas Rodrigues
- *            Nilvan Junior
+ * Trabalho de Orientacao a Objetos
+ * Orçamento de uma República  
+ * Feito por: Ana Julia       180097504
+ *            Davi Matheus    190042419
+ *            Lais Portela    190046848
+ *            Lucas Rodrigues 180125974
+ *            Nilvan Junior   170122468
  */
 package application;
 
@@ -58,7 +59,7 @@ public class Program {
 					 if (income < 0) throw new RendimentoInvalidoException();
 				}catch(RendimentoInvalidoException error)
 	            {
-					JOptionPane.showMessageDialog(null, "N�o pode cadastrar renda negativa, RendimentoInvalidoException");
+					JOptionPane.showMessageDialog(null, "N�o pode cadastrar renda negativa, RendimentoInvalidoException");
 					register.getStudents().forEach(s -> System.out.println(s));
 					break;
 	            }

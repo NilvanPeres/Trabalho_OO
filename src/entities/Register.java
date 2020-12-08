@@ -1,19 +1,8 @@
-/**
- * Trabalho de Orientacao a Objetos 
- * Feito por: Ana Julia 
- *            Davi Matheus
- *            Lais Portela
- *            Lucas Rodrigues
- *            Nilvan Junior
- */
+
 package entities;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
-import exceptions.NoCategoryFoundException;
-import exceptions.NoCategoryInExpenseException;
 
 public class Register {
 
