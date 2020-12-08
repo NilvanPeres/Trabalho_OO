@@ -24,8 +24,11 @@ public class Expense {
     	this.year = year; 	
 	}
 
-	public Expense(String nomeDespesa, Integer valorDespesaInt) {
+	
+	public Expense(String description2, Double valorDespesaInt) {
+		// TODO Auto-generated constructor stub
 	}
+
 
 	//Metodos gets e sets
 	public double getAccount() {

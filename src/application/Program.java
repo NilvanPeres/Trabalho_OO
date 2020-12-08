@@ -16,17 +16,18 @@ import javax.swing.JOptionPane;
 import entities.Expense;
 import entities.Register;
 import entities.Student;
+import exceptions.NoCategoryFoundException;
+import exceptions.NoCategoryInExpenseException;
 import exceptions.RendimentoInvalidoException;
 import entities.Category;
 
 public class Program {
 
 	public static void main(String[] args) {
-		
+
 		Register register = new Register();
 
-
-		// MENU
+		// menu
 
 		System.out.println("Menu description: ");
 
@@ -55,31 +56,46 @@ public class Program {
 				String renda = JOptionPane.showInputDialog(null, "Digite sua renda: ");
 				Double income = Double.valueOf(renda);
 				try {
-					 if (income < 0) throw new RendimentoInvalidoException();
-				}catch(RendimentoInvalidoException error)
-	            {
-					JOptionPane.showMessageDialog(null, "Não pode cadastrar renda negativa, RendimentoInvalidoException");
-					register.getStudents().forEach(s -> System.out.println(s));
+					if (income < 0)
+						throw new RendimentoInvalidoException();
+				} catch (RendimentoInvalidoException error) {
+					JOptionPane.showMessageDialog(null,
+							"Não pode cadastrar renda negativa!!!\n\n" + " RendimentoInvalidoException ");
 					break;
-	            }
-				
-				Student s = new Student(nomeEstudante, nomeEstudante, income);
+				}
+
+				Student s = new Student(nomeEstudante, emailEstudante, income);
 				register.add(s);
 				JOptionPane.showMessageDialog(null, "Cadastro de Estudante Concluido com sucesso");
+
 				break;
 
 			case 2:
 				String nomeCategoria = JOptionPane.showInputDialog(null, "Digite o nome da categoria: ");
 				Category c = new Category(nomeCategoria);
-				register.add(c);
-				JOptionPane.showMessageDialog(null, "Cadastro de Categoria Concluido com sucesso");
-				break;
 
+				try {
+					if (nomeCategoria.isEmpty()) {
+						throw new NoCategoryFoundException("Categoria em branco");
+
+					}
+					
+					register.add(c);
+					JOptionPane.showMessageDialog(null, "Cadastro de Categoria Concluido com sucesso");
+
+				} catch (Exception e) {
+					System.out.println("Tratando excessão");
+
+				}
+
+				
+
+				break;
 			case 3:
 				String description = JOptionPane.showInputDialog(null, "Digite o nome da despesa");
 				String valorDespesa = JOptionPane.showInputDialog(null, "Digite o valor da despesa");
 				Double valorDespesaInt = Double.valueOf(valorDespesa);
-				Expense e = new Expense(description, valorDespesaInt);
+				Expense e = new Expense(description, valorDespesaInt, opInt, opInt);
 				register.add(e);
 				break;
 
@@ -87,14 +103,12 @@ public class Program {
 
 		} while (opInt != 4);
 		System.out.println("saindo do menu");
-		
-		
+
+		register.getStudents().forEach(s -> System.out.println(s));
 		register.getCategories().forEach(c -> System.out.println(c));
 		register.getExpenses().forEach(e -> System.out.println(e));
 
-
-		
-		//register.removeStudent(student);
+		// register.removeStudent(student);
 
 		// List<Expense> expenses = new ArrayList<>();
 		// Expense despesa = new Expense();
@@ -104,22 +118,20 @@ public class Program {
 		// despesa.setYear(2020);
 		// despesa.setMonth(12);
 
-		/*List<Expense> expenseNovembro2020 = new ArrayList<>();
-
-		// for(Expense e : expenses){
-		// if(e.getMonth() == 11 && e.getYear() == 2020){
-		// expenseNovembro2020.add(despesa);
-		// }
-		// }
-
-		double custoNovembro2020 = 0.0;
-		// expenseNovembro2020.forEach(e -> custoNovembro2020 += e.getExpense());
-
-		int soma;
-		*/
+		/*
+		 * List<Expense> expenseNovembro2020 = new ArrayList<>();
+		 * 
+		 * // for(Expense e : expenses){ // if(e.getMonth() == 11 && e.getYear() ==
+		 * 2020){ // expenseNovembro2020.add(despesa); // } // }
+		 * 
+		 * double custoNovembro2020 = 0.0; // expenseNovembro2020.forEach(e ->
+		 * custoNovembro2020 += e.getExpense());
+		 * 
+		 * int soma;
+		 */
 
 		/*
-		 * -------------------------------Sugestï¿½o para implementar uma interface
+		 * -------------------------------Sugestão para implementar uma interface
 		 * simples-------------------------------
 		 * 
 		 * String one =
