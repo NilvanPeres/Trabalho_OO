@@ -1,10 +1,18 @@
 
+/**
+ * Trabalho de Orientacao a Objetos 
+ * Feito por: Ana Julia 
+ *            Davi Matheus
+ *            Lais Portela
+ *            Lucas Rodrigues
+ *            Nilvan Junior
+ */
 package entities;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Register {
+public class Register implements Calculation {
 
 	private List<Category> categories; // new ArrayList<Category>();
 	private List<Student> students;
@@ -163,6 +171,18 @@ public class Register {
 	@Override
 	public String toString() {
 		return "Register [categories=" + categories + ", students=" + students + "]";
+	}
+
+
+	public Double calculateByProportion(List<Student> ls, List<Expense> le) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public Double calculate(List<Student> ls, List<Expense> le) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

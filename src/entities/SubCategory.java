@@ -1,15 +1,12 @@
 /**
- * Trabalho de Orientacao a Objetos
- * Orçamento de uma República  
- * Feito por: Ana Julia       180097504
- *            Davi Matheus    190042419
- *            Lais Portela    190046848
- *            Lucas Rodrigues 180125974
- *            Nilvan Junior   170122468
+ * Trabalho de Orientacao a Objetos 
+ * Feito por: Ana Julia 
+ *            Davi Matheus
+ *            Lais Portela
+ *            Lucas Rodrigues
+ *            Nilvan Junior
  */
 package entities;
-
-import exceptions.NoCategoryFoundException;
 
 public class SubCategory extends Category{
 
@@ -28,9 +25,6 @@ public class SubCategory extends Category{
 
 	public void setSubCategoryName(String subCategoryName) {
 		this.subCategoryName = subCategoryName;
-		if(subCategoryName == getCategoryName()) {
-			throw new NoCategoryFoundException("Invalid Sub-Category");
-		}
 	}
 
 	// Polimorfismo

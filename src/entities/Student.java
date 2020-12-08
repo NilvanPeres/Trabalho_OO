@@ -1,7 +1,13 @@
 
+/**
+ * Trabalho de Orientacao a Objetos 
+ * Feito por: Ana Julia 
+ *            Davi Matheus
+ *            Lais Portela
+ *            Lucas Rodrigues
+ *            Nilvan Junior
+ */
 package entities;
-
-import exceptions.InvalidIncomeException;
 
 public class Student {
 	
@@ -49,9 +55,6 @@ public class Student {
 	// Metodos da classe
 	public void calculeIncome(double income) { // Calculo da renda mensal
     	this.income += income;
-    	if(income <= 0) {
-    		throw new InvalidIncomeException("Income cannot be less or equal to 0")
-    	}
     }
 	
 	

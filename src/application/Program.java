@@ -1,11 +1,10 @@
 /**
- * Trabalho de Orientacao a Objetos
- * Or√ßamento de uma Rep√∫blica  
- * Feito por: Ana Julia       180097504
- *            Davi Matheus    190042419
- *            Lais Portela    190046848
- *            Lucas Rodrigues 180125974
- *            Nilvan Junior   170122468
+ * Trabalho de Orientacao a Objetos 
+ * Feito por: Ana Julia 
+ *            Davi Matheus
+ *            Lais Portela
+ *            Lucas Rodrigues
+ *            Nilvan Junior
  */
 package application;
 
@@ -57,18 +56,11 @@ public class Program {
 				String renda = JOptionPane.showInputDialog(null, "Digite sua renda: ");
 				Double income = Double.valueOf(renda);
 				try {
-					 if (income < 0) throw new RendimentoInvalidoException();
-				}catch(RendimentoInvalidoException error)
-	            {
-					JOptionPane.showMessageDialog(null, "NÔøΩo pode cadastrar renda negativa, RendimentoInvalidoException");
-					register.getStudents().forEach(s -> System.out.println(s));
-
 					if (income < 0)
 						throw new RendimentoInvalidoException();
 				} catch (RendimentoInvalidoException error) {
 					JOptionPane.showMessageDialog(null,
-							"NÔøΩo pode cadastrar renda negativa!!!\n\n" + " RendimentoInvalidoException ");
-
+							"N„o pode cadastrar renda negativa!!!\n\n" + " RendimentoInvalidoException ");
 					break;
 				}
 
@@ -92,11 +84,9 @@ public class Program {
 					JOptionPane.showMessageDialog(null, "Cadastro de Categoria Concluido com sucesso");
 
 				} catch (Exception e) {
-					System.out.println("Tratando excessÔøΩo");
+					JOptionPane.showMessageDialog(null, "Coloque uma categoria para cadastro!!!");
 
 				}
-
-				
 
 				break;
 			case 3:
@@ -139,7 +129,7 @@ public class Program {
 		 */
 
 		/*
-		 * -------------------------------SugestÔøΩo para implementar uma interface
+		 * -------------------------------Sugest„o para implementar uma interface
 		 * simples-------------------------------
 		 * 
 		 * String one =
