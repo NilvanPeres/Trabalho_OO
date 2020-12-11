@@ -68,7 +68,7 @@ public class Program {
 				
 				try {
 					if (nomeEstudante.isEmpty() || emailEstudante.isEmpty() || renda.isEmpty()) {
-						throw new NoRegisterFoundException("Registros em Branco");
+						throw new NoRegisterFoundException("Dados incompletos!! Por favor preencha todos os campos");
 
 					}
 					
@@ -76,10 +76,10 @@ public class Program {
 					JOptionPane.showMessageDialog(null, "Cadastro de Estudante Concluido com sucesso");
 
 				} catch (Exception e) {
-					JOptionPane.showMessageDialog(null, "Coloque os dados corretos!!!");
-
+					JOptionPane.showMessageDialog(null, "Dados incompletos!! Por favor preencha todos os campos.");
+					break;
 				}
-				
+				s.alunoTxt();
 
 				break;
 
@@ -89,8 +89,7 @@ public class Program {
 
 				try {
 					if (nomeCategoria.isEmpty()) {
-						throw new NoRegisterFoundException("Categoria em branco");
-
+						throw new NoRegisterFoundException("Dados incompletos!! Preencha o campo.");
 
 					}
 					
@@ -98,8 +97,7 @@ public class Program {
 					JOptionPane.showMessageDialog(null, "Cadastro de Categoria Concluido com sucesso");
 
 				} catch (Exception e) {
-					JOptionPane.showMessageDialog(null, "Coloque uma categoria para cadastro!!!");
-
+					JOptionPane.showMessageDialog(null, "Dados incompletos!! Por favor preencha todos os campos.");
 				}
 
 				break;
@@ -107,7 +105,13 @@ public class Program {
 				String description = JOptionPane.showInputDialog(null, "Digite o nome da despesa");
 				String valorDespesa = JOptionPane.showInputDialog(null, "Digite o valor da despesa");
 				Double valorDespesaInt = Double.valueOf(valorDespesa);
-				Expense e = new Expense(description, valorDespesaInt, opInt, opInt);
+				
+				String monthString = JOptionPane.showInputDialog(null, "Digite o mês: ");
+				Integer month = Integer.valueOf(monthString);
+				String yearSring = JOptionPane.showInputDialog(null, "Digite o ano: ");
+				Integer year = Integer.valueOf(yearSring);
+				
+				Expense e = new Expense(description, valorDespesaInt, month, year);
 				
 				try {
 					if (description.isEmpty()) {
@@ -118,10 +122,10 @@ public class Program {
 					JOptionPane.showMessageDialog(null, "Cadastro de despesa Concluido com sucesso");
 
 				} catch (Exception d) {
-					JOptionPane.showMessageDialog(null, "Coloque uma descriçaõ para cadastro!!!");
+					JOptionPane.showMessageDialog(null, "Dados incompletos!! Por favor preencha todos os campos.");
 
 				}
-				
+				e.despesaTxt(month, year);
 				break;
 
 			}
