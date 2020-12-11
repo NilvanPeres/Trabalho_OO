@@ -50,7 +50,7 @@ public class Program {
 					 if (income < 0) throw new RendimentoInvalidoException();
 				}catch(RendimentoInvalidoException error)
 	            {
-					JOptionPane.showMessageDialog(null, "Não pode cadastrar renda negativa, RendimentoInvalidoException");
+					JOptionPane.showMessageDialog(null, "Nï¿½o pode cadastrar renda negativa, RendimentoInvalidoException");
 					break;
 	            }
 				
@@ -68,9 +68,9 @@ public class Program {
 
 			case 3:
 				String description = JOptionPane.showInputDialog(null, "Digite o nome da despesa");
-				String valorDespesa = JOptionPane.showInputDialog(null, "Digite o valor da despesa");
-				Double valorDespesaInt = Double.valueOf(valorDespesa);
-				Expense e = new Expense(description, valorDespesaInt);
+				String valueAccount = JOptionPane.showInputDialog(null, "Digite o valor da despesa");
+				Double account = Double.valueOf(valueAccount);
+				Expense e = new Expense(description, account);
 				register.add(e);
 				break;
 
@@ -110,7 +110,7 @@ public class Program {
 		
 
 		/*
-		 * -------------------------------Sugestão para implementar uma interface
+		 * -------------------------------Sugestï¿½o para implementar uma interface
 		 * simples-------------------------------
 		 * 
 		 * String one =
