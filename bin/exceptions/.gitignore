@@ -3,3 +3,7 @@
 /NoCategoryInExpenseException.class
 /no.class
 /NoCategoryFoundException.class
+/RendimentoInvalidoException.class
+/InvalidIncomeException.class
+/NoExpenseExceptions.class
+/NoRegisterFoundException.class

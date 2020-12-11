@@ -1,3 +1,11 @@
+/**
+ * Trabalho de Orientacao a Objetos 
+ * Feito por: Ana Julia 
+ *            Davi Matheus
+ *            Lais Portela
+ *            Lucas Rodrigues
+ *            Nilvan Junior
+ */
 package application;
 
 import java.util.ArrayList;
@@ -8,15 +16,16 @@ import javax.swing.JOptionPane;
 import entities.Expense;
 import entities.Register;
 import entities.Student;
+import exceptions.NoCategoryInExpenseException;
+import exceptions.NoRegisterFoundException;
 import exceptions.RendimentoInvalidoException;
 import entities.Category;
 
 public class Program {
 
 	public static void main(String[] args) {
-		
-		Register register = new Register();
 
+		Register register = new Register();
 
 		// menu
 
@@ -47,45 +56,88 @@ public class Program {
 				String renda = JOptionPane.showInputDialog(null, "Digite sua renda: ");
 				Double income = Double.valueOf(renda);
 				try {
-					 if (income < 0) throw new RendimentoInvalidoException();
-				}catch(RendimentoInvalidoException error)
-	            {
-					JOptionPane.showMessageDialog(null, "N�o pode cadastrar renda negativa, RendimentoInvalidoException");
+					if (income < 0)
+						throw new RendimentoInvalidoException();
+				} catch (RendimentoInvalidoException error) {
+					JOptionPane.showMessageDialog(null,
+							"N�o pode cadastrar renda negativa!!!\n\n" + " RendimentoInvalidoException ");
 					break;
-	            }
+				}
+
+				Student s = new Student(nomeEstudante, emailEstudante, income);
 				
-				Student s = new Student(nomeEstudante, nomeEstudante, income);
-				register.add(s);
-				JOptionPane.showMessageDialog(null, "Cadastro de Estudante Concluido com sucesso");
+				try {
+					if (nomeEstudante.isEmpty() || emailEstudante.isEmpty() || renda.isEmpty()) {
+						throw new NoRegisterFoundException("Dados incompletos!! Por favor preencha todos os campos");
+
+					}
+					
+					register.add(s);
+					JOptionPane.showMessageDialog(null, "Cadastro de Estudante Concluido com sucesso");
+
+				} catch (Exception e) {
+					JOptionPane.showMessageDialog(null, "Dados incompletos!! Por favor preencha todos os campos.");
+					break;
+				}
+				s.alunoTxt();
+
 				break;
 
 			case 2:
 				String nomeCategoria = JOptionPane.showInputDialog(null, "Digite o nome da categoria: ");
 				Category c = new Category(nomeCategoria);
-				register.add(c);
-				JOptionPane.showMessageDialog(null, "Cadastro de Categoria Concluido com sucesso");
-				break;
 
+				try {
+					if (nomeCategoria.isEmpty()) {
+						throw new NoRegisterFoundException("Dados incompletos!! Preencha o campo.");
+
+					}
+					
+					register.add(c);
+					JOptionPane.showMessageDialog(null, "Cadastro de Categoria Concluido com sucesso");
+
+				} catch (Exception e) {
+					JOptionPane.showMessageDialog(null, "Dados incompletos!! Por favor preencha todos os campos.");
+				}
+
+				break;
 			case 3:
 				String description = JOptionPane.showInputDialog(null, "Digite o nome da despesa");
-				String valueAccount = JOptionPane.showInputDialog(null, "Digite o valor da despesa");
-				Double account = Double.valueOf(valueAccount);
-				Expense e = new Expense(description, account);
-				register.add(e);
+				String valorDespesa = JOptionPane.showInputDialog(null, "Digite o valor da despesa");
+				Double valorDespesaInt = Double.valueOf(valorDespesa);
+				
+				String monthString = JOptionPane.showInputDialog(null, "Digite o m�s: ");
+				Integer month = Integer.valueOf(monthString);
+				String yearSring = JOptionPane.showInputDialog(null, "Digite o ano: ");
+				Integer year = Integer.valueOf(yearSring);
+				
+				Expense e = new Expense(description, valorDespesaInt, month, year);
+				
+				try {
+					if (description.isEmpty()) {
+						throw new NoRegisterFoundException("Descri��o em branco");
+					}
+					
+					register.add(e);
+					JOptionPane.showMessageDialog(null, "Cadastro de despesa Concluido com sucesso");
+
+				} catch (Exception d) {
+					JOptionPane.showMessageDialog(null, "Dados incompletos!! Por favor preencha todos os campos.");
+
+				}
+				e.despesaTxt(month, year);
 				break;
 
 			}
 
 		} while (opInt != 4);
 		System.out.println("saindo do menu");
-		
+
 		register.getStudents().forEach(s -> System.out.println(s));
 		register.getCategories().forEach(c -> System.out.println(c));
 		register.getExpenses().forEach(e -> System.out.println(e));
 
-
-		
-		//register.removeStudent(student);
+		// register.removeStudent(student);
 
 		// List<Expense> expenses = new ArrayList<>();
 		// Expense despesa = new Expense();
@@ -95,19 +147,17 @@ public class Program {
 		// despesa.setYear(2020);
 		// despesa.setMonth(12);
 
-		List<Expense> expenseNovembro2020 = new ArrayList<>();
-
-		// for(Expense e : expenses){
-		// if(e.getMonth() == 11 && e.getYear() == 2020){
-		// expenseNovembro2020.add(despesa);
-		// }
-		// }
-
-		double custoNovembro2020 = 0.0;
-		// expenseNovembro2020.forEach(e -> custoNovembro2020 += e.getExpense());
-
-		int soma;
-		
+		/*
+		 * List<Expense> expenseNovembro2020 = new ArrayList<>();
+		 * 
+		 * // for(Expense e : expenses){ // if(e.getMonth() == 11 && e.getYear() ==
+		 * 2020){ // expenseNovembro2020.add(despesa); // } // }
+		 * 
+		 * double custoNovembro2020 = 0.0; // expenseNovembro2020.forEach(e ->
+		 * custoNovembro2020 += e.getExpense());
+		 * 
+		 * int soma;
+		 */
 
 		/*
 		 * -------------------------------Sugest�o para implementar uma interface
