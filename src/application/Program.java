@@ -1,10 +1,10 @@
 /**
  * Trabalho de Orientacao a Objetos 
- * Feito por: Ana Julia 
- *            Davi Matheus
- *            Lais Portela
- *            Lucas Rodrigues
- *            Nilvan Junior
+ * Feito por: 180097504 Ana Julia 
+ *            190042419 Davi Matheus
+ *            190046848 Lais Portela
+ *            180125974 Lucas Rodrigues
+ *            170122468 Nilvan Junior
  */
 package application;
 
@@ -74,7 +74,7 @@ public class Program {
 						throw new RendimentoInvalidoException();
 				} catch (RendimentoInvalidoException error) {
 					JOptionPane.showMessageDialog(null,
-							"Não pode cadastrar renda negativa!!!\n\n" + " RendimentoInvalidoException ");
+							"Nï¿½o pode cadastrar renda negativa!!!\n\n" + " RendimentoInvalidoException ");
 					break;
 				}
 
@@ -146,14 +146,14 @@ public class Program {
 		    
 		        Double valorDespesaInt = Double.valueOf(valorDespesa);	
 
-				String monthString = JOptionPane.showInputDialog(null, "Digite o mês: ");
+				String monthString = JOptionPane.showInputDialog(null, "Digite o mï¿½s: ");
 				Integer month = Integer.valueOf(monthString);
 				try {
 					if (month <= 0 || month > 12)
 						throw new DataInvalidaException();
 				} catch (DataInvalidaException error) {
 					JOptionPane.showMessageDialog(null,
-							"Mês Invalido !!!\n\n ");
+							"Mï¿½s Invalido !!!\n\n ");
 					break;
 				}
 				
@@ -178,13 +178,13 @@ public class Program {
 						throw new RendimentoInvalidoException();
 				} catch (RendimentoInvalidoException error) {
 					JOptionPane.showMessageDialog(null,
-							"Não pode cadastrar renda negativa!!!\n\n" + " RendimentoInvalidoException ");
+							"Nï¿½o pode cadastrar renda negativa!!!\n\n" + " RendimentoInvalidoException ");
 					break;
 				}
 				
 				try {
 					if (description.isEmpty()) {
-						throw new NoRegisterFoundException("Descrição em branco");
+						throw new NoRegisterFoundException("Descriï¿½ï¿½o em branco");
 					}
 					
 					register.add(e);
@@ -242,7 +242,7 @@ public class Program {
 		 */
 
 		/*
-		 * -------------------------------Sugestão para implementar uma interface
+		 * -------------------------------Sugestï¿½o para implementar uma interface
 		 * simples-------------------------------
 		 * 
 		 * String one =

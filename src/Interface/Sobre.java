@@ -40,7 +40,7 @@ public class Sobre extends JFrame {
 		
 		JTextArea txtrComponetesDoGrupo = new JTextArea();
 		txtrComponetesDoGrupo.setBounds(35, 73, 385, 185);
-		txtrComponetesDoGrupo.setText("Componentes do Grupo:\n-----------------------------------------\n180097504 - Ana Julia\n190000000 - Davi\n190100000 - Lais Portela\n180100000 - Lucas Rodrigues\n180100000 - Nilvan Junior");
+		txtrComponetesDoGrupo.setText("Componentes do Grupo:\n-----------------------------------------\n180097504 - Ana Julia\n190042419 - Davi\n190046848 - Lais Portela\n180125974 - Lucas Rodrigues\n170122468 - Nilvan Junior");
 		contentPane.add(txtrComponetesDoGrupo);
 	}
 
