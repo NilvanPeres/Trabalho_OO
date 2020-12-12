@@ -14,7 +14,7 @@ public class Category {
 	
 	private String categoryName; // string para definir nome da categoria
 	private String categoryRegister; // string para registrar a categoria
-	private List<Expense> expenses; //lista despesa
+	private List<Expense> expenses; // lista despesa
 	
 	
 	//Construtor 
