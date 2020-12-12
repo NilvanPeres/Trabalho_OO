@@ -8,18 +8,15 @@
  */
 package application;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.JOptionPane;
 
+import entities.Category;
 import entities.Expense;
 import entities.Register;
 import entities.Student;
-import exceptions.NoCategoryInExpenseException;
+import entities.SubCategory;
 import exceptions.NoRegisterFoundException;
 import exceptions.RendimentoInvalidoException;
-import entities.Category;
 
 public class Program {
 
@@ -55,12 +52,14 @@ public class Program {
 				String emailEstudante = JOptionPane.showInputDialog(null, "Digite seu e-mail: ");
 				String renda = JOptionPane.showInputDialog(null, "Digite sua renda: ");
 				Double income = Double.valueOf(renda);
+				Student student = new Student(nomeEstudante, emailEstudante, income);
+				System.out.println(student.toString());
 				try {
 					if (income < 0)
 						throw new RendimentoInvalidoException();
 				} catch (RendimentoInvalidoException error) {
 					JOptionPane.showMessageDialog(null,
-							"N�o pode cadastrar renda negativa!!!\n\n" + " RendimentoInvalidoException ");
+							"Nao pode cadastrar renda negativa!!!\n\n" + " RendimentoInvalidoException ");
 					break;
 				}
 
@@ -85,12 +84,14 @@ public class Program {
 
 			case 2:
 				String nomeCategoria = JOptionPane.showInputDialog(null, "Digite o nome da categoria: ");
+				String subCategoria = JOptionPane.showInputDialog(null, "Digite o nome da categoria: ");
 				Category c = new Category(nomeCategoria);
-
+				SubCategory sub = new SubCategory(subCategoria);
+				System.out.println(sub.toString());
+				
 				try {
 					if (nomeCategoria.isEmpty()) {
 						throw new NoRegisterFoundException("Dados incompletos!! Preencha o campo.");
-
 					}
 					
 					register.add(c);
@@ -106,16 +107,18 @@ public class Program {
 				String valorDespesa = JOptionPane.showInputDialog(null, "Digite o valor da despesa");
 				Double valorDespesaInt = Double.valueOf(valorDespesa);
 				
-				String monthString = JOptionPane.showInputDialog(null, "Digite o m�s: ");
+				String monthString = JOptionPane.showInputDialog(null, "Digite o mes: ");
 				Integer month = Integer.valueOf(monthString);
 				String yearSring = JOptionPane.showInputDialog(null, "Digite o ano: ");
 				Integer year = Integer.valueOf(yearSring);
-				
 				Expense e = new Expense(description, valorDespesaInt, month, year);
+				System.out.println(e.toString());
+				
+				System.out.println(register.calculate(income, valorDespesaInt));
 				
 				try {
 					if (description.isEmpty()) {
-						throw new NoRegisterFoundException("Descri��o em branco");
+						throw new NoRegisterFoundException("Descricao em branco");
 					}
 					
 					register.add(e);
@@ -137,44 +140,5 @@ public class Program {
 		register.getCategories().forEach(c -> System.out.println(c));
 		register.getExpenses().forEach(e -> System.out.println(e));
 
-		// register.removeStudent(student);
-
-		// List<Expense> expenses = new ArrayList<>();
-		// Expense despesa = new Expense();
-		// Category category = new Category();
-		// despesa.setCategory(categoria);
-		// despesa.setDescription("Fatura Caesb");
-		// despesa.setYear(2020);
-		// despesa.setMonth(12);
-
-		/*
-		 * List<Expense> expenseNovembro2020 = new ArrayList<>();
-		 * 
-		 * // for(Expense e : expenses){ // if(e.getMonth() == 11 && e.getYear() ==
-		 * 2020){ // expenseNovembro2020.add(despesa); // } // }
-		 * 
-		 * double custoNovembro2020 = 0.0; // expenseNovembro2020.forEach(e ->
-		 * custoNovembro2020 += e.getExpense());
-		 * 
-		 * int soma;
-		 */
-
-		/*
-		 * -------------------------------Sugest�o para implementar uma interface
-		 * simples-------------------------------
-		 * 
-		 * String one =
-		 * JOptionPane.showInputDialog("Digite o nome da categoria a criar: "); String i
-		 * = input.nextLine(); category.setCategoryName (i);
-		 * 
-		 * 
-		 * //String two = JOptionPane.showInputDialog("Digite o valor da categoria: ");
-		 * //int segundoNum = Integer.parseInt(two); //soma = primeiroNum + segundoNum;
-		 * 
-		 * 
-		 * JOptionPane.showMessageDialog(null,t);
-		 * 
-		 * input.close();
-		 */
 	}
 }
