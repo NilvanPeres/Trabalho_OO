@@ -47,13 +47,16 @@ public class Category {
 		expenses.remove(e);
 	}
 	
-	
-	
-	
 
 	public String getCategoryRegister() {
 		return categoryRegister;
 		
+	}
+	
+	@Override
+	public String toString() {
+		return "Category: "
+		+ categoryName;	
 	}
 
 }

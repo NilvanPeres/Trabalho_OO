@@ -9,6 +9,7 @@ public class Register  {
 	private List<Category> categories; // new ArrayList<Category>();
 	private List<Student> students;
 	private List<Expense> expenses;
+	private List<SubCategory> subCategories;
 
 	public Register() {
 		this.students = new ArrayList<Student>(); // array list de estudantes
@@ -23,6 +24,10 @@ public class Register  {
 	public List<Category> getCategories() { // get da lista de categoria
 		return categories;
 	}
+	
+	public List<SubCategory> getsubCategories() { // get da lista de categoria
+		return subCategories;
+	}
 
 	public List<Student> getStudents() { // get da lista de estudantes
 		return students;
@@ -31,6 +36,8 @@ public class Register  {
 	public List<Expense> getExpenses() { // get da lista de despesa
 		return expenses;
 	}
+	
+	
 
 	public void add(Category c) { // adiciona categoria
 		this.categories.add(c);
@@ -38,6 +45,10 @@ public class Register  {
 
 	public void add(Expense e) { // adiciona despesa
 		this.expenses.add(e);
+	}
+	
+	public void add(SubCategory sub) { // adiciona despesa
+		this.subCategories.add(sub);
 	}
 
 	public Double calculateIncomes() { // calcula a renda mensal dos estudantes

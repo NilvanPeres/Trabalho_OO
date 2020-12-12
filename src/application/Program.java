@@ -11,11 +11,13 @@ package application;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 
 import entities.Expense;
 import entities.Register;
 import entities.Student;
+import entities.SubCategory;
 import exceptions.DataInvalidaException;
 import exceptions.NoCategoryInExpenseException;
 import exceptions.NoRegisterFoundException;
@@ -38,7 +40,7 @@ public class Program {
 		do {
 			opStr = JOptionPane.showInputDialog(null,
 					"Selecione a opcao desejada. Ou digite 4 para sair do programa: \n "
-							+ " \n 1. Register Student. \n 2. Register Category . \n 3. Register Despesa. \n 4. Exit.");
+							+ " \n 1. Register Student. \n 2. Register Category . \n 3. Register Despesa. \n 4. Calculate \n 5. Exit.");
 
 			// Caso a entrada nao seja um inteiro
 			try {
@@ -46,7 +48,7 @@ public class Program {
 			} catch (NumberFormatException e) {
 				JOptionPane.showInputDialog(null,
 						"ENTRADA INVALIDA !!! \n Selecione a opcao desejada. Ou digite 4 para sair do programa: \n "
-								+ " \n 1. Register Student. \n 2. Register Category . \n 3. Register Despesa. \n 4. Exit.");
+								+ " \n 1. Register Student. \n 2. Register Category . \n 3. Register Despesa. \n 4. Calculate \n 5. Exit.");
 				opInt = 0;
 			}
 
@@ -110,8 +112,21 @@ public class Program {
 
 				} catch (Exception e) {
 					JOptionPane.showMessageDialog(null, "Dados incompletos!! Por favor preencha todos os campos.");
+					break;
 				}
+				String[] quests = {"Essa categoria possui uma sub-categoria ?"};
+				int a = JOptionPane.showConfirmDialog(null, 
+						   "Essa categoria possui uma sub-categoria ?",null, JOptionPane.YES_NO_OPTION);
 
+		        if (a == 0) {
+		        	String NomeSubCategoria = JOptionPane.showInputDialog(null, "Digite nome da subcategoria: ");
+		        	SubCategory sub = new SubCategory(NomeSubCategoria);
+		        	register.add(sub);
+		        	JOptionPane.showMessageDialog(null, "Cadastro de Sub-categoria Concluido com sucesso");
+		        	
+		        } else {
+		            System.out.println("Imagine dando errado");
+		        }
 				break;
 			case 3:
 
@@ -181,10 +196,23 @@ public class Program {
 				}
 				e.despesaTxt(month, year);
 				break;
+			case 4:
+			       
+			        String[] options = {"CalculateByProportion", "CalculateIguality"};
+			        int x = JOptionPane.showOptionDialog(null, "Choose an option",
+			                "Don't forget to Tick it!",
+			                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 
+			        if (x == 0) {
+			        	JOptionPane.showMessageDialog(null, "Deu certo.");
+			        } else {
+			            System.out.println("Imagine dando errado");
+			        }
 			}
 
-		} while (opInt != 4);
+			
+
+		} while (opInt != 5);
 		System.out.println("saindo do menu");
 
 		register.getStudents().forEach(s -> System.out.println(s));
