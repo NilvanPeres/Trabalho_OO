@@ -134,16 +134,8 @@ public class Expense {
 	
 	@Override //polimorfismo
 	public String toString() {
-		return "Name: "  
-		+ description 
-		+  ", Month: " 
-		+ month 
-		+ ", Year: " 
-		+ year 
-		+ "expense: "
-		+ String.format("%.2f", getAccount());
-	}
-	
-	
+		return "Expense [Name expense=" + description + ", Valor=" + account + ", Month=" + month + ", Year=" + year +"]";
+		}
+
 
 }

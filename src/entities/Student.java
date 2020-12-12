@@ -6,43 +6,43 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class Student {
-	
+
 	// atributos
 	private String name; // nome do estudante
-    private String email; // email do estudante
-    private double income; // renda mensal do estudante
-    
-    // construtor da classe
-    public Student(String name, String email, double income) {
+	private String email; // email do estudante
+	private double income; // renda mensal do estudante
+
+	// construtor da classe
+	public Student(String name, String email, double income) {
 		this.name = name;
 		this.email = email;
 		this.income = income;
 	}
-    
-    
-    public String alunoTxt(){
+
+
+	public String alunoTxt(){
 		try {
-			
+
 			FileWriter fw = new FileWriter("alunos.txt", true);
 			PrintWriter pw = new PrintWriter(fw);
-			
+
 			pw.println("Nome: " + this.name + "; Email: " + this.email + "; Rendimento: " + this.income);
 			pw.flush();
 			pw.close();
 			fw.close();
-			
-			
-			
+
+
+
 		} catch (IOException ex) {
 			// TODO Auto-generated catch block
 			ex.printStackTrace();
 		}
 		return "cadastrado com sucesso";
 	}
-    
-    
+
+
 	// Metodos gets e sets
-    public String getName() {
+	public String getName() {
 		return name;
 	}
 
@@ -60,17 +60,12 @@ public class Student {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 
 	public double getIncome() {
 		return income;
 	}
-	
-	
 
-	
-	
-	
 	//Polimorfismo de email e nome
 	@Override
 	public int hashCode() { 
@@ -83,8 +78,6 @@ public class Student {
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
-
-	
 
 	// Metodo de validação
 	@Override
@@ -110,15 +103,9 @@ public class Student {
 			return false;
 		return true;
 	}
-	
-
-		 
 
 	@Override
 	public String toString() {
-		return "Name: "
-		+ name 
-		+ "Email: "
-		+  email;
+		return "Student [name=" + name + ", email=" + email + ", income=" + income + "]";
 	}
 }

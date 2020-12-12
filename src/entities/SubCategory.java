@@ -4,30 +4,28 @@ package entities;
 public class SubCategory extends Category{
 
 	// Atributo
-	private String subCategoryName; // nome da subcategoria
+	private String SubCategoryName; // nome da subcategoria
 	
 	// Construtor
-	 public SubCategory(String categoryName) {
-		 super(categoryName);
-		 this.subCategoryName = subCategoryName;
+	 public SubCategory(String SubCategoryName) {
+		 super(SubCategoryName);
+		 this.SubCategoryName = SubCategoryName;
 		}
 	
 	// Metodos gets e sets
 	public String getSubCategoryName() {
-		return subCategoryName;
+		return SubCategoryName;
 	}
 
 	public void setSubCategoryName(String subCategoryName) {
-		this.subCategoryName = subCategoryName;
+		this.SubCategoryName = subCategoryName;
 	}
 
 	// Polimorfismo
     @Override
     public String toString() {
-        return "Category: "
-        + getCategoryName()
-        + "Subcategory"
-        + subCategoryName;
+        return "Subcategory: ,"
+        + SubCategoryName;
     }
 	
 }

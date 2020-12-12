@@ -8,7 +8,6 @@ public class Category {
 	private String categoryRegister; // string para registrar a categoria
 	private List<Expense> expenses; // lista despesa
 	
-	
 	//Construtor 
 	public Category (String categoryName) { 
 		this.categoryName = categoryName;
@@ -22,8 +21,6 @@ public class Category {
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
-
-	
 
 	public void setCategoryRegister(String categoryRegister) {
 		this.categoryRegister = categoryRegister;
@@ -55,8 +52,7 @@ public class Category {
 	
 	@Override
 	public String toString() {
-		return "Category: "
-		+ categoryName;	
+		return "Category" + "" + categoryName;
 	}
 
 }
