@@ -73,7 +73,7 @@ public class Expense {
 			FileWriter fw = new FileWriter(fileName, true);
 			PrintWriter pw = new PrintWriter(fw);
 			
-			pw.println("Nome: " + this.description + ";  Valor: " + this.account); //está faltando categoria e subcategoria
+			pw.println("Nome: " + this.description + ";  Valor: " + this.account); //estï¿½ faltando categoria e subcategoria
 			pw.flush();
 			pw.close();
 			fw.close();	
@@ -128,15 +128,22 @@ public class Expense {
 		this.account -= account;
 	}
 	
-	
-	
-	@Override //polimorfismo
-	public String toString() {
-		return "Expense [Nome Despesa=" + description + ", Valor=" + account + ", Mes=" + month + ", Ano=" + year +"]";
-	}
-	
 	public double calculeExpense(){ //calcula a renda mensal dos estudantes	
 		return month * account;
 		}
+	
+	@Override //polimorfismo
+	public String toString() {
+		return "Name: "  
+		+ description 
+		+  ", Month: " 
+		+ month 
+		+ ", Year: " 
+		+ year 
+		+ "expense: "
+		+ String.format("%.2f", calculeExpense());
+	}
+	
+	
 
 }

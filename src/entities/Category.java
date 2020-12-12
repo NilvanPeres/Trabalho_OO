@@ -56,11 +56,6 @@ public class Category {
 	}
 	
 	
-	//Polimorfismo
-	@Override 
-    public String toString() {
-        return "Categoria [nome=" + categoryName + "]";
-    }
 	
 	
 

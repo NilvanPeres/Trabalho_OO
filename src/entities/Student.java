@@ -1,18 +1,9 @@
 
-/**
- * Trabalho de Orientacao a Objetos 
- * Feito por: Ana Julia 
- *            Davi Matheus
- *            Lais Portela
- *            Lucas Rodrigues
- *            Nilvan Junior
- */
 package entities;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.charset.Charset;
 
 public class Student {
 	
@@ -77,10 +68,7 @@ public class Student {
 	
 	
 
-	// Metodos da classe
-	public void calculeIncome(double income) { // Calculo da renda mensal
-    	this.income += income;
-    }
+	
 	
 	
 	//Polimorfismo de email e nome
@@ -124,20 +112,13 @@ public class Student {
 	}
 	
 
-
-	//Método toString
-	public String toString2(){
-		return "Name: "
-		+ name
-		+ "Email: "
-		+ email
-		+ "Income: "
-		+ income;
-		
-	} 
+		 
 
 	@Override
 	public String toString() {
-		return "Student [name=" + name + ", email=" + email + ", income=" + income + "]";
+		return "Name: "
+		+ name 
+		+ "Email: "
+		+  email;
 	}
 }
