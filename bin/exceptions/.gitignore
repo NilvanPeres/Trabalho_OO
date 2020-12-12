@@ -7,3 +7,5 @@
 /InvalidIncomeException.class
 /NoExpenseExceptions.class
 /NoRegisterFoundException.class
+/data.class
+/DataInvalidaException.class

@@ -1,11 +1,3 @@
-/**
- * Trabalho de Orientacao a Objetos 
- * Feito por: Ana Julia 
- *            Davi Matheus
- *            Lais Portela
- *            Lucas Rodrigues
- *            Nilvan Junior
- */
 package entities;
 
 import java.util.List;
@@ -55,18 +47,16 @@ public class Category {
 		expenses.remove(e);
 	}
 	
-	
-	//Polimorfismo
-	@Override 
-    public String toString() {
-        return "Categoria [nome=" + categoryName + "]";
-    }
-	
-	
 
 	public String getCategoryRegister() {
 		return categoryRegister;
 		
+	}
+	
+	@Override
+	public String toString() {
+		return "Category: "
+		+ categoryName;	
 	}
 
 }

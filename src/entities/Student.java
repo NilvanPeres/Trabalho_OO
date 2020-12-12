@@ -1,13 +1,9 @@
 
-/**
- * Trabalho de Orientacao a Objetos 
- * Feito por: Ana Julia 
- *            Davi Matheus
- *            Lais Portela
- *            Lucas Rodrigues
- *            Nilvan Junior
- */
 package entities;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class Student {
 	
@@ -22,7 +18,27 @@ public class Student {
 		this.email = email;
 		this.income = income;
 	}
-
+    
+    
+    public String alunoTxt(){
+		try {
+			
+			FileWriter fw = new FileWriter("alunos.txt", true);
+			PrintWriter pw = new PrintWriter(fw);
+			
+			pw.println("Nome: " + this.name + "; Email: " + this.email + "; Rendimento: " + this.income);
+			pw.flush();
+			pw.close();
+			fw.close();
+			
+			
+			
+		} catch (IOException ex) {
+			// TODO Auto-generated catch block
+			ex.printStackTrace();
+		}
+		return "cadastrado com sucesso";
+	}
     
     
 	// Metodos gets e sets
@@ -44,7 +60,7 @@ public class Student {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
 
 	public double getIncome() {
 		return income;
@@ -52,10 +68,7 @@ public class Student {
 	
 	
 
-	// Metodos da classe
-	public void calculeIncome(double income) { // Calculo da renda mensal
-    	this.income += income;
-    }
+	
 	
 	
 	//Polimorfismo de email e nome
@@ -97,21 +110,15 @@ public class Student {
 			return false;
 		return true;
 	}
+	
 
-
-	//Método toString
-	public String toString2(){
-		return "Name: "
-		+ name
-		+ "Email: "
-		+ email
-		+ "Income: "
-		+ income;
-		
-	} 
+		 
 
 	@Override
 	public String toString() {
-		return "Student [name=" + name + ", email=" + email + ", income=" + income + "]";
+		return "Name: "
+		+ name 
+		+ "Email: "
+		+  email;
 	}
 }

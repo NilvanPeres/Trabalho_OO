@@ -11,11 +11,14 @@ package application;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 
 import entities.Expense;
 import entities.Register;
 import entities.Student;
+import entities.SubCategory;
+import exceptions.DataInvalidaException;
 import exceptions.NoCategoryInExpenseException;
 import exceptions.NoRegisterFoundException;
 import exceptions.RendimentoInvalidoException;
@@ -37,7 +40,7 @@ public class Program {
 		do {
 			opStr = JOptionPane.showInputDialog(null,
 					"Selecione a opcao desejada. Ou digite 4 para sair do programa: \n "
-							+ " \n 1. Register Student. \n 2. Register Category . \n 3. Register Despesa. \n 4. Exit.");
+							+ " \n 1. Register Student. \n 2. Register Category . \n 3. Register Despesa. \n 4. Calculate \n 5. Exit.");
 
 			// Caso a entrada nao seja um inteiro
 			try {
@@ -45,7 +48,7 @@ public class Program {
 			} catch (NumberFormatException e) {
 				JOptionPane.showInputDialog(null,
 						"ENTRADA INVALIDA !!! \n Selecione a opcao desejada. Ou digite 4 para sair do programa: \n "
-								+ " \n 1. Register Student. \n 2. Register Category . \n 3. Register Despesa. \n 4. Exit.");
+								+ " \n 1. Register Student. \n 2. Register Category . \n 3. Register Despesa. \n 4. Calculate \n 5. Exit.");
 				opInt = 0;
 			}
 
@@ -54,7 +57,18 @@ public class Program {
 				String nomeEstudante = JOptionPane.showInputDialog(null, "Digite seu nome: ");
 				String emailEstudante = JOptionPane.showInputDialog(null, "Digite seu e-mail: ");
 				String renda = JOptionPane.showInputDialog(null, "Digite sua renda: ");
+				try {
+					if (renda.isEmpty())
+						throw new RendimentoInvalidoException();
+				} catch (RendimentoInvalidoException error) {
+					JOptionPane.showMessageDialog(null,
+							"Dados incompletos!! Por favor preencha todos os campos ");
+					break;
+				}
+				
 				Double income = Double.valueOf(renda);
+				
+				
 				try {
 					if (income < 0)
 						throw new RendimentoInvalidoException();
@@ -68,7 +82,7 @@ public class Program {
 				
 				try {
 					if (nomeEstudante.isEmpty() || emailEstudante.isEmpty() || renda.isEmpty()) {
-						throw new NoRegisterFoundException("Registros em Branco");
+						throw new NoRegisterFoundException("Dados incompletos!! Por favor preencha todos os campos");
 
 					}
 					
@@ -76,10 +90,10 @@ public class Program {
 					JOptionPane.showMessageDialog(null, "Cadastro de Estudante Concluido com sucesso");
 
 				} catch (Exception e) {
-					JOptionPane.showMessageDialog(null, "Coloque os dados corretos!!!");
-
+					JOptionPane.showMessageDialog(null, "Dados incompletos!! Por favor preencha todos os campos.");
+					break;
 				}
-				
+				s.alunoTxt();
 
 				break;
 
@@ -89,8 +103,7 @@ public class Program {
 
 				try {
 					if (nomeCategoria.isEmpty()) {
-						throw new NoRegisterFoundException("Categoria em branco");
-
+						throw new NoRegisterFoundException("Dados incompletos!! Preencha o campo.");
 
 					}
 					
@@ -98,16 +111,76 @@ public class Program {
 					JOptionPane.showMessageDialog(null, "Cadastro de Categoria Concluido com sucesso");
 
 				} catch (Exception e) {
-					JOptionPane.showMessageDialog(null, "Coloque uma categoria para cadastro!!!");
-
+					JOptionPane.showMessageDialog(null, "Dados incompletos!! Por favor preencha todos os campos.");
+					break;
 				}
+				String[] quests = {"Essa categoria possui uma sub-categoria ?"};
+				int a = JOptionPane.showConfirmDialog(null, 
+						   "Essa categoria possui uma sub-categoria ?",null, JOptionPane.YES_NO_OPTION);
 
+		        if (a == 0) {
+		        	String NomeSubCategoria = JOptionPane.showInputDialog(null, "Digite nome da subcategoria: ");
+		        	SubCategory sub = new SubCategory(NomeSubCategoria);
+		        	register.add(sub);
+		        	JOptionPane.showMessageDialog(null, "Cadastro de Sub-categoria Concluido com sucesso");
+		        	
+		        } else {
+		            System.out.println("Imagine dando errado");
+		        }
 				break;
 			case 3:
+
 				String description = JOptionPane.showInputDialog(null, "Digite o nome da despesa");
+				
 				String valorDespesa = JOptionPane.showInputDialog(null, "Digite o valor da despesa");
-				Double valorDespesaInt = Double.valueOf(valorDespesa);
-				Expense e = new Expense(description, valorDespesaInt, opInt, opInt);
+				
+				try {
+					if (valorDespesa.isEmpty())
+						throw new RendimentoInvalidoException();
+				} catch (RendimentoInvalidoException error) {
+					JOptionPane.showMessageDialog(null,
+							"Dados incompletos!! Por favor preencha todos os campos ");
+					break;
+				}
+				
+		    
+		        Double valorDespesaInt = Double.valueOf(valorDespesa);	
+
+				String monthString = JOptionPane.showInputDialog(null, "Digite o mês: ");
+				Integer month = Integer.valueOf(monthString);
+				try {
+					if (month <= 0 || month > 12)
+						throw new DataInvalidaException();
+				} catch (DataInvalidaException error) {
+					JOptionPane.showMessageDialog(null,
+							"Mês Invalido !!!\n\n ");
+					break;
+				}
+				
+				String yearSring = JOptionPane.showInputDialog(null, "Digite o ano: ");
+				try {
+					 if (yearSring.length() != 4)
+						 throw new DataInvalidaException();
+				} catch (DataInvalidaException error) {
+					JOptionPane.showMessageDialog(null,
+							"Ano Invalido !!!\n\n ");
+					break;
+				}
+						 
+				
+				Integer year = Integer.valueOf(yearSring);
+				
+				
+				Expense e = new Expense(description, valorDespesaInt, month, year);
+				
+				try {
+					if (valorDespesaInt < 0)
+						throw new RendimentoInvalidoException();
+				} catch (RendimentoInvalidoException error) {
+					JOptionPane.showMessageDialog(null,
+							"Não pode cadastrar renda negativa!!!\n\n" + " RendimentoInvalidoException ");
+					break;
+				}
 				
 				try {
 					if (description.isEmpty()) {
@@ -118,15 +191,28 @@ public class Program {
 					JOptionPane.showMessageDialog(null, "Cadastro de despesa Concluido com sucesso");
 
 				} catch (Exception d) {
-					JOptionPane.showMessageDialog(null, "Coloque uma descriçaõ para cadastro!!!");
+					JOptionPane.showMessageDialog(null, "Dados incompletos!! Por favor preencha todos os campos.");
 
 				}
-				
+				e.despesaTxt(month, year);
 				break;
+			case 4:
+			       
+			        String[] options = {"CalculateByProportion", "CalculateIguality"};
+			        int x = JOptionPane.showOptionDialog(null, "Choose an option",
+			                "Don't forget to Tick it!",
+			                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 
+			        if (x == 0) {
+			        	JOptionPane.showMessageDialog(null, "Deu certo.");
+			        } else {
+			            System.out.println("Imagine dando errado");
+			        }
 			}
 
-		} while (opInt != 4);
+			
+
+		} while (opInt != 5);
 		System.out.println("saindo do menu");
 
 		register.getStudents().forEach(s -> System.out.println(s));
