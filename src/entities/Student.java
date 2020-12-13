@@ -1,9 +1,10 @@
-
 package entities;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Iterator;
+import java.util.List;
 
 public class Student {
 
@@ -12,34 +13,13 @@ public class Student {
 	private String email; // email do estudante
 	private double income; // renda mensal do estudante
 
+
 	// construtor da classe
 	public Student(String name, String email, double income) {
 		this.name = name;
 		this.email = email;
 		this.income = income;
 	}
-
-
-	public String alunoTxt(){
-		try {
-
-			FileWriter fw = new FileWriter("alunos.txt", true);
-			PrintWriter pw = new PrintWriter(fw);
-
-			pw.println("Nome: " + this.name + "; Email: " + this.email + "; Rendimento: " + this.income);
-			pw.flush();
-			pw.close();
-			fw.close();
-
-
-
-		} catch (IOException ex) {
-			// TODO Auto-generated catch block
-			ex.printStackTrace();
-		}
-		return "cadastrado com sucesso";
-	}
-
 
 	// Metodos gets e sets
 	public String getName() {
@@ -65,13 +45,6 @@ public class Student {
 	public double getIncome() {
 		return income;
 	}
-	
-	
-
-	public void setIncome(double income) {
-		this.income = income;
-	}
-
 
 	//Polimorfismo de email e nome
 	@Override
@@ -113,6 +86,6 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return "Studante name: " + name + ", email: " + email + ", income: R$" + income;
+		return "Student [name=" + name + ", email=" + email + ", income=" + income + "]";
 	}
 }

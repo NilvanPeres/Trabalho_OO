@@ -1,13 +1,24 @@
+ /*
+ * Trabalho de Orientacao a Objetos 
+ * Feito por: Ana Julia 
+ *            Davi Matheus
+ *            Lais Portela
+ *            Lucas Rodrigues
+ *            Nilvan Junior
+ */
 package exceptions;
 
  public class RendimentoInvalidoException extends Exception 
 {
-   
-  
-	private static final long serialVersionUID = 1L;
-
-	public RendimentoInvalidoException(String errorMessage) 
+    public RendimentoInvalidoException() 
     {
+        super();
+    }
+    public RendimentoInvalidoException(String errorMessage) 
+
+
+
+{
         super(errorMessage);
     }
 }

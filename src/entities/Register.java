@@ -1,6 +1,12 @@
 
 package entities;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -22,6 +28,57 @@ public class Register {
 	public void add(Student s) { // Metodo para adicionar estudante
 		this.students.add(s);
 	}
+	
+	 public void recordStudent() {
+			String resposta = "";
+			
+			Iterator<Student> it = students.iterator();
+			while (it.hasNext()) {
+				Student s = it.next();
+				resposta += "nome =  " + s.getName() + " ; " + "email = " + s.getEmail() + " ; " +  "renda = " + s.getIncome() + "\n";
+			}
+			
+			PrintWriter saida = null;
+			try {
+				saida = new PrintWriter(new FileWriter("alunos.txt", true));
+				
+				saida.print(resposta);
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				if (saida != null)
+					saida.close();
+			}
+			
+	    }
+	   
+	   
+	   public void lerArquivoAlunos () throws IOException {
+
+	        try {
+	                FileInputStream arquivo = new FileInputStream("alunosCadastrados.txt");
+	                InputStreamReader input = new InputStreamReader(arquivo);
+	                BufferedReader br = new BufferedReader(input);
+	               
+	       
+	    
+	                String linha; 
+	               do {
+	            	   linha = br.readLine();
+	            	   if  (linha != null) {
+	            		   String[] palavras = linha.split(";");
+	            		   System.out.println("Nova linha---------------------------------");
+	            		   for(int i =0; i<palavras.length; i++) {
+	            			   System.out.println("Palavra lida = " + palavras[i] );
+	            		   }
+	            	   }
+	               }while(linha != null);
+	            	
+	                
+	            } catch (Exception e) {
+	                System.out.println("erro");
+	            }
+	        }
 
 	public boolean check_students() {
 		Iterator<Student> it = students.iterator();

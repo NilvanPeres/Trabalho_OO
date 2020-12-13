@@ -1,4 +1,5 @@
 /**
+ /**
  * Trabalho de Orientacao a Objetos 
  * Feito por: 180097504 Ana Julia 
  *            190042419 Davi Matheus
@@ -8,8 +9,15 @@
  */
 package application;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import exceptions.DataInvalidaException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.swing.Box;
 import javax.swing.JCheckBox;
@@ -22,6 +30,7 @@ import entities.Expense;
 import entities.Register;
 import entities.Student;
 import entities.SubCategory;
+import exceptions.DataInvalidaException;
 import exceptions.NoCategoryInExpenseException;
 import exceptions.NoRegisterFoundException;
 import exceptions.RendimentoInvalidoException;
@@ -29,7 +38,7 @@ import entities.Category;
 
 public class Program {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		Register register = new Register();
 		// menu
@@ -54,37 +63,29 @@ public class Program {
 			}
 			switch (opInt) {
 			case 1:
+				
 				String nomeEstudante = JOptionPane.showInputDialog(null, "Digite seu nome: ");
 				String emailEstudante = JOptionPane.showInputDialog(null, "Digite seu e-mail: ");
-				String renda = JOptionPane.showInputDialog("Digite sua renda: ");
-				Double income = Double.valueOf(renda);
-				
-				Student student = new Student(nomeEstudante, emailEstudante, income);
-				
-				student.setEmail(emailEstudante);
-				student.setName(nomeEstudante);
-				student.setIncome(Integer.valueOf(renda));
-				
-				
+				String renda = JOptionPane.showInputDialog(null, "Digite sua renda: ");
 				try {
 					if (renda.isEmpty())
-						throw new RendimentoInvalidoException(nomeEstudante);
+						throw new RendimentoInvalidoException();
 				} catch (RendimentoInvalidoException error) {
 					JOptionPane.showMessageDialog(null,
 							"Dados incompletos!! Por favor preencha todos os campos ");
 					break;
 				}
-				 income = Double.valueOf(renda);
+				Double income = Double.valueOf(renda);
 				try {
 					if (income < 0)
-						throw new RendimentoInvalidoException(nomeEstudante);
+						throw new RendimentoInvalidoException();
 				} catch (RendimentoInvalidoException error) {
 					JOptionPane.showMessageDialog(null,
 							"Nï¿½o pode cadastrar renda negativa!!!\n\n" + " RendimentoInvalidoException ");
 					break;
 				}
-
-				Student s = new Student(nomeEstudante, emailEstudante, income);
+				
+				  Student s = new Student(nomeEstudante, emailEstudante, income);
 				try {
 					if (nomeEstudante.isEmpty() || emailEstudante.isEmpty() || renda.isEmpty()) {
 						throw new NoRegisterFoundException("Dados incompletos!! Por favor preencha todos os campos");
@@ -95,17 +96,17 @@ public class Program {
 					JOptionPane.showMessageDialog(null, "Dados incompletos!! Por favor preencha todos os campos.");
 					break;
 				}
-				s.alunoTxt();
+				register.recordStudent();
 				break;
-
+				
 			case 2:
 				String nomeCategoria = JOptionPane.showInputDialog(null, "Digite o nome da categoria: ");
-				Category category = new Category(nomeCategoria);
+				Category c = new Category(nomeCategoria);
 				try {
 					if (nomeCategoria.isEmpty()) {
 						throw new NoRegisterFoundException("Dados incompletos!! Preencha o campo.");
 					}
-					register.add(category);
+					register.add(c);
 					JOptionPane.showMessageDialog(null, "Cadastro de Categoria Concluido com sucesso");
 				} catch (Exception e) {
 					JOptionPane.showMessageDialog(null, "Dados incompletos!! Por favor preencha todos os campos.");
@@ -126,10 +127,10 @@ public class Program {
 			case 3:
 				String description = JOptionPane.showInputDialog(null, "Digite o nome da despesa");
 				String valorDespesa = JOptionPane.showInputDialog(null, "Digite o valor da despesa");
-				Double conta = Double.valueOf(valorDespesa);
+
 				try {
 					if (valorDespesa.isEmpty())
-						throw new RendimentoInvalidoException(valorDespesa);
+						throw new RendimentoInvalidoException();
 				} catch (RendimentoInvalidoException error) {
 					JOptionPane.showMessageDialog(null,
 							"Dados incompletos!! Por favor preencha todos os campos ");
@@ -140,26 +141,26 @@ public class Program {
 				Integer month = Integer.valueOf(monthString);
 				try {
 					if (month <= 0 || month > 12)
-						throw new NoCategoryInExpenseException(monthString);
-				} catch (NoCategoryInExpenseException error) {
+						throw new DataInvalidaException();
+				} catch (DataInvalidaException error) {
 					JOptionPane.showMessageDialog(null,
 							"Mï¿½s Invalido !!!\n\n ");
 					break;
 				}
-				String yearString = JOptionPane.showInputDialog(null, "Digite o ano: ");
+				String yearSring = JOptionPane.showInputDialog(null, "Digite o ano: ");
 				try {
-					if (yearString.length() != 4)
-						throw new NoCategoryInExpenseException(yearString);
-				} catch (NoCategoryInExpenseException error) {
+					if (yearSring.length() != 4)
+						throw new DataInvalidaException();
+				} catch (DataInvalidaException error) {
 					JOptionPane.showMessageDialog(null,
 							"Ano Invalido !!!\n\n ");
 					break;
 				}
-				Integer year = Integer.valueOf(yearString);
+				Integer year = Integer.valueOf(yearSring);
 				Expense e = new Expense(description, valorDespesaInt, month, year);
 				try {
 					if (valorDespesaInt < 0)
-						throw new RendimentoInvalidoException(yearString);
+						throw new RendimentoInvalidoException();
 				} catch (RendimentoInvalidoException error) {
 					JOptionPane.showMessageDialog(null,
 							"Nï¿½o pode cadastrar renda negativa!!!\n\n" + " RendimentoInvalidoException ");
@@ -176,8 +177,6 @@ public class Program {
 				}
 				e.despesaTxt(month, year);
 				break;
-				
-				
 			
 			case 4:
 				String[] options = {"CalculateByProportion", "CalculateIguality"};
@@ -185,9 +184,9 @@ public class Program {
 						JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 
 				if (x == 0) {
-					//Primeiro tem q checar sem tem alunos e despesas cadastrados para realizar a divisï¿½o de despesas.
+					//Primeiro tem q checar sem tem alunos e despesas cadastrados para realizar a divisão de despesas.
 
-					//Caso tenham, perguntar o mï¿½s e o ano para o cï¿½lculo desejado
+					//Caso tenham, perguntar o mês e o ano para o cálculo desejado
 					JTextField xField = new JTextField(5);
 					JTextField yField = new JTextField(5);
 
@@ -204,22 +203,39 @@ public class Program {
 						System.out.println("Ano: " + xField.getText());
 						System.out.println("Mes: " + yField.getText());
 					}
-					//checar se existem esse mï¿½s e ano cadastrados (ano guardado em = xField e mï¿½s em yField)
+					//checar se existem esse mês e ano cadastrados (ano guardado em = xField e mês em yField)
 					
 
 				} else {
 					register.calculateEquility(null, null);
 				}
 				break;
+			
 			case 5: 
-				if(register.check_students() == false){
-					System.out.println("Nenhuma estudante cadastrado ainda\n");
-				}
-				else {
-					JOptionPane.showMessageDialog(null, register.getStudents().toString());
-				break;
-			}
-			case 6:
+				 try {
+		                FileInputStream arquivo = new FileInputStream("alunos.txt");
+		                InputStreamReader input = new InputStreamReader(arquivo);
+		                BufferedReader br = new BufferedReader(input);
+		              
+		                String linha; 
+		               do {
+		            	   
+		            	   linha = br.readLine();
+		            	   if  (linha != null) {
+		            		   
+		            		 
+		            			   JOptionPane.showMessageDialog(null,"Estudante: \n" + linha);
+		            		   }
+		            	   }
+		               while(linha != null);
+		            	
+		                
+		            } catch (Exception y) {
+		                System.out.println("erro");
+		            }
+					
+					case 6:
+				
 				if(register.check_expenses() == false){
 					System.out.println("Nenhuma estudante cadastrado ainda\n");
 				}
@@ -277,4 +293,7 @@ public class Program {
 		 * input.close();
 		 */
 	}
-}
+
+	
+		
+	}
