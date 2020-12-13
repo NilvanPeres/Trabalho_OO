@@ -128,13 +128,11 @@ public class Expense {
 		this.account -= account;
 	}
 	
-	public double calculeExpense(){ //calcula a renda mensal dos estudantes	
-		return month * account;
-		}
+	
 	
 	@Override //polimorfismo
 	public String toString() {
-		return "Expense [Name expense=" + description + ", Valor=" + account + ", Month=" + month + ", Year=" + year +"]";
+		return "nome: " + description + ", conta: R$ " + account + ", mês: " + month + ", ano: " + year;
 		}
 
 

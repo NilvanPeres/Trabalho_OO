@@ -24,7 +24,7 @@ public class SubCategory extends Category{
 	// Polimorfismo
     @Override
     public String toString() {
-        return "Subcategory: ,"
+        return "Subcategory: "
         + SubCategoryName;
     }
 	

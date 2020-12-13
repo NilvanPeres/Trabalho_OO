@@ -22,7 +22,6 @@ import entities.Expense;
 import entities.Register;
 import entities.Student;
 import entities.SubCategory;
-import exceptions.DataInvalidaException;
 import exceptions.NoCategoryInExpenseException;
 import exceptions.NoRegisterFoundException;
 import exceptions.RendimentoInvalidoException;
@@ -57,19 +56,28 @@ public class Program {
 			case 1:
 				String nomeEstudante = JOptionPane.showInputDialog(null, "Digite seu nome: ");
 				String emailEstudante = JOptionPane.showInputDialog(null, "Digite seu e-mail: ");
-				String renda = JOptionPane.showInputDialog(null, "Digite sua renda: ");
+				String renda = JOptionPane.showInputDialog("Digite sua renda: ");
+				Double income = Double.valueOf(renda);
+				
+				Student student = new Student(nomeEstudante, emailEstudante, income);
+				
+				student.setEmail(emailEstudante);
+				student.setName(nomeEstudante);
+				student.setIncome(Integer.valueOf(renda));
+				
+				
 				try {
 					if (renda.isEmpty())
-						throw new RendimentoInvalidoException();
+						throw new RendimentoInvalidoException(nomeEstudante);
 				} catch (RendimentoInvalidoException error) {
 					JOptionPane.showMessageDialog(null,
 							"Dados incompletos!! Por favor preencha todos os campos ");
 					break;
 				}
-				Double income = Double.valueOf(renda);
+				 income = Double.valueOf(renda);
 				try {
 					if (income < 0)
-						throw new RendimentoInvalidoException();
+						throw new RendimentoInvalidoException(nomeEstudante);
 				} catch (RendimentoInvalidoException error) {
 					JOptionPane.showMessageDialog(null,
 							"Nï¿½o pode cadastrar renda negativa!!!\n\n" + " RendimentoInvalidoException ");
@@ -92,12 +100,12 @@ public class Program {
 
 			case 2:
 				String nomeCategoria = JOptionPane.showInputDialog(null, "Digite o nome da categoria: ");
-				Category c = new Category(nomeCategoria);
+				Category category = new Category(nomeCategoria);
 				try {
 					if (nomeCategoria.isEmpty()) {
 						throw new NoRegisterFoundException("Dados incompletos!! Preencha o campo.");
 					}
-					register.add(c);
+					register.add(category);
 					JOptionPane.showMessageDialog(null, "Cadastro de Categoria Concluido com sucesso");
 				} catch (Exception e) {
 					JOptionPane.showMessageDialog(null, "Dados incompletos!! Por favor preencha todos os campos.");
@@ -118,10 +126,10 @@ public class Program {
 			case 3:
 				String description = JOptionPane.showInputDialog(null, "Digite o nome da despesa");
 				String valorDespesa = JOptionPane.showInputDialog(null, "Digite o valor da despesa");
-
+				Double conta = Double.valueOf(valorDespesa);
 				try {
 					if (valorDespesa.isEmpty())
-						throw new RendimentoInvalidoException();
+						throw new RendimentoInvalidoException(valorDespesa);
 				} catch (RendimentoInvalidoException error) {
 					JOptionPane.showMessageDialog(null,
 							"Dados incompletos!! Por favor preencha todos os campos ");
@@ -132,26 +140,26 @@ public class Program {
 				Integer month = Integer.valueOf(monthString);
 				try {
 					if (month <= 0 || month > 12)
-						throw new DataInvalidaException();
-				} catch (DataInvalidaException error) {
+						throw new NoCategoryInExpenseException(monthString);
+				} catch (NoCategoryInExpenseException error) {
 					JOptionPane.showMessageDialog(null,
 							"Mï¿½s Invalido !!!\n\n ");
 					break;
 				}
-				String yearSring = JOptionPane.showInputDialog(null, "Digite o ano: ");
+				String yearString = JOptionPane.showInputDialog(null, "Digite o ano: ");
 				try {
-					if (yearSring.length() != 4)
-						throw new DataInvalidaException();
-				} catch (DataInvalidaException error) {
+					if (yearString.length() != 4)
+						throw new NoCategoryInExpenseException(yearString);
+				} catch (NoCategoryInExpenseException error) {
 					JOptionPane.showMessageDialog(null,
 							"Ano Invalido !!!\n\n ");
 					break;
 				}
-				Integer year = Integer.valueOf(yearSring);
+				Integer year = Integer.valueOf(yearString);
 				Expense e = new Expense(description, valorDespesaInt, month, year);
 				try {
 					if (valorDespesaInt < 0)
-						throw new RendimentoInvalidoException();
+						throw new RendimentoInvalidoException(yearString);
 				} catch (RendimentoInvalidoException error) {
 					JOptionPane.showMessageDialog(null,
 							"Nï¿½o pode cadastrar renda negativa!!!\n\n" + " RendimentoInvalidoException ");
@@ -168,6 +176,8 @@ public class Program {
 				}
 				e.despesaTxt(month, year);
 				break;
+				
+				
 			
 			case 4:
 				String[] options = {"CalculateByProportion", "CalculateIguality"};
@@ -175,9 +185,9 @@ public class Program {
 						JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 
 				if (x == 0) {
-					//Primeiro tem q checar sem tem alunos e despesas cadastrados para realizar a divisão de despesas.
+					//Primeiro tem q checar sem tem alunos e despesas cadastrados para realizar a divisï¿½o de despesas.
 
-					//Caso tenham, perguntar o mês e o ano para o cálculo desejado
+					//Caso tenham, perguntar o mï¿½s e o ano para o cï¿½lculo desejado
 					JTextField xField = new JTextField(5);
 					JTextField yField = new JTextField(5);
 
@@ -194,7 +204,7 @@ public class Program {
 						System.out.println("Ano: " + xField.getText());
 						System.out.println("Mes: " + yField.getText());
 					}
-					//checar se existem esse mês e ano cadastrados (ano guardado em = xField e mês em yField)
+					//checar se existem esse mï¿½s e ano cadastrados (ano guardado em = xField e mï¿½s em yField)
 					
 
 				} else {

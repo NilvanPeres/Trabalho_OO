@@ -52,7 +52,9 @@ public class Category {
 	
 	@Override
 	public String toString() {
-		return "Category" + "" + categoryName;
+		return "Category: " + categoryName;
 	}
+	
+	
 
 }

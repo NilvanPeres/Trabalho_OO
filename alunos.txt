@@ -1,0 +1,4 @@
+Nome: Lucas; Email: Lucas@gmail.com; Rendimento: 4500.0
+Nome: Lucas; Email: Lucas@gmail.com; Rendimento: 4500.0
+Nome: Lucas Rodrigues Monteiro; Email: Lucas@gmail.com; Rendimento: 4500.0
+Nome: Lucas; Email: Lucas@gmail.com; Rendimento: 4500.0

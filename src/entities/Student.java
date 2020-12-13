@@ -65,6 +65,13 @@ public class Student {
 	public double getIncome() {
 		return income;
 	}
+	
+	
+
+	public void setIncome(double income) {
+		this.income = income;
+	}
+
 
 	//Polimorfismo de email e nome
 	@Override
@@ -106,6 +113,6 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return "Student [name=" + name + ", email=" + email + ", income=" + income + "]";
+		return "Studante name: " + name + ", email: " + email + ", income: R$" + income;
 	}
 }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Register  {
+public class Register {
 
 	private List<Category> categories; // new ArrayList<Category>();
 	private List<Student> students;
@@ -22,19 +22,19 @@ public class Register  {
 	public void add(Student s) { // Metodo para adicionar estudante
 		this.students.add(s);
 	}
-	
+
 	public boolean check_students() {
 		Iterator<Student> it = students.iterator();
-		if(it.hasNext() == false)
+		if (it.hasNext() == false)
 			return false;
 		else
 			return true;
-		}
+	}
 
 	public List<Category> getCategories() { // get da lista de categoria
 		return categories;
 	}
-	
+
 	public List<SubCategory> getSubCategories() { // get da lista de categoria
 		return SubCategories;
 	}
@@ -46,8 +46,6 @@ public class Register  {
 	public List<Expense> getExpenses() { // get da lista de despesa
 		return expenses;
 	}
-	
-	
 
 	public void add(Category c) { // adiciona categoria
 		this.categories.add(c);
@@ -56,14 +54,15 @@ public class Register  {
 	public void add(Expense e) { // adiciona despesa
 		this.expenses.add(e);
 	}
+
 	public boolean check_expenses() {
 		Iterator<Expense> it = expenses.iterator();
-		if(it.hasNext() == false)
+		if (it.hasNext() == false)
 			return false;
 		else
 			return true;
 	}
-	
+
 	public void add(SubCategory sub) { // adiciona despesa
 		this.SubCategories.add(sub);
 	}
@@ -76,6 +75,7 @@ public class Register  {
 		}
 		return total;
 	}
+
 	public Double calculateExpenses() { // calcula a renda mensal dos estudantes
 		Double totalExpenses = 0.0;
 		for (Expense e : expenses) {
@@ -84,7 +84,6 @@ public class Register  {
 		}
 		return totalExpenses;
 	}
-	
 
 	public void removeStudent(Student student) { // remove estudante
 		this.students.remove(student);
@@ -95,23 +94,7 @@ public class Register  {
 	}
 
 	public Double calculateEquility(List<Student> students, List<Expense> expenses) {
-		return calculateExpenses()/ students.size();
+		return calculateExpenses() / students.size();
 	}
-	
-
-	// Polimorfismo
-	@Override
-	public String toString() {
-		return  "Categories: " 
-		+ categories 
-		+ "Students: "
-		+ students
-		+ "Expenses: "
-		+ expenses ;
-	}
-
-
-
-	
 
 }
