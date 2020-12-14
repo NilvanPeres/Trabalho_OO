@@ -47,7 +47,7 @@ public class Program {
 				String emailEstudante = JOptionPane.showInputDialog(null, "Typer your e-mail: ");
 				String renda = JOptionPane.showInputDialog(null, "Type your income: ");
 				
-				//Se income(renda) estiver vazia lança excessão de dados incompletos.
+				//Se income(renda) estiver vazia lanca excessao de dados incompletos.
 				try {
 					if (renda.isEmpty())
 						throw new RendimentoInvalidoException();
@@ -58,7 +58,7 @@ public class Program {
 				}
 				Double income = Double.valueOf(renda);
 				
-				// Se income(renda) for um valor negativo uma excessão é lançada.
+				// Se income(renda) for um valor negativo uma excessao lancada.
 				try {
 					if (income < 0)
 						throw new RendimentoInvalidoException();
@@ -70,7 +70,7 @@ public class Program {
 
 				Student s = new Student(nomeEstudante, emailEstudante, income);
 				
-				// Se nome/e-mail/income forem nulos uma excessão é lançada
+				// Se nome/e-mail/income forem nulos uma excessao sera lancada
 				try {
 					if (nomeEstudante.isEmpty() || emailEstudante.isEmpty() || renda.isEmpty()) {
 						throw new NoRegisterFoundException("Register incomplete!! Please type all information requested.");
@@ -88,7 +88,7 @@ public class Program {
 			case 2:
 				String nomeCategoria = JOptionPane.showInputDialog(null, "Type category: ");
 				Category c = new Category(nomeCategoria);
-				//Se categoria for nula uma excessão é lançada
+				//Se categoria for nula uma excesscao e lancada
 				try {
 					if (nomeCategoria.isEmpty()) {
 						throw new NoRegisterFoundException("Register incomplete!! Please type all information requested.");
@@ -116,7 +116,7 @@ public class Program {
 				String valorDespesa = JOptionPane.showInputDialog(null, "Type value of expense");
 				String DespesaCategory = JOptionPane.showInputDialog(null, "Type the category of the expense");
 
-				// se DespesaCategory for vazia uma excessão é lançada
+				// se DespesaCategory for vazia uma excessao sera lancada
 				try {
 					if (DespesaCategory.isEmpty())
 						throw new NoCategoryInExpenseException();
@@ -125,7 +125,7 @@ public class Program {
 							"Register incomplete!! Please type all information requested.");
 					break;
 				}
-				//Se despesa for null uma excessão é lançada
+				//Se despesa for null uma excessao sera lancada
 				try {
 					if (valorDespesa.isEmpty())
 						throw new RendimentoInvalidoException();
@@ -147,7 +147,7 @@ public class Program {
 				}
 				String yearSring = JOptionPane.showInputDialog(null, "Type year: ");
 				
-				//Se o ano digitado não possuir 4 caracteres uma excessão é lançada
+				//Se o ano digitado nao possuir 4 caracteres uma excessao sera lancada
 				try {
 					if (yearSring.length() != 4)
 						throw new DataInvalidaException();
@@ -159,7 +159,7 @@ public class Program {
 				Integer year = Integer.valueOf(yearSring);
 				Expense e = new Expense(description, valorDespesaInt, month, year, DespesaCategory);
 				
-				//se o valor da despesa for negativo, uma excessão é lançada
+				//se o valor da despesa for negativo, uma excessao sera lancada
 				try {
 					if (valorDespesaInt < 0)
 						throw new RendimentoInvalidoException();
@@ -168,7 +168,7 @@ public class Program {
 							"You can't register negative incomes !!!\\n\\n\" + \" RendimentoInvalidoException ");
 					break;
 				}
-				// se a descrição for null uma excessão é lançada.
+				// se a descricao for null uma excesscao sera lanï¿½ada.
 				try {
 					if (description.isEmpty()) {
 						throw new NoRegisterFoundException("Missing values");
@@ -187,7 +187,7 @@ public class Program {
 						JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 
 				if (x == 0) {
-					//Primeiro tem q checar sem tem alunos e despesas cadastrados para realizar a divisão de despesas.
+					//Primeiro tem q checar sem tem alunos e despesas cadastrados para realizar a divisï¿½o de despesas.
 
 					String monthS = JOptionPane.showInputDialog(null, "Type month: ");
 					int monthInt = Integer.parseInt(monthS);
@@ -195,7 +195,7 @@ public class Program {
 					int yearI = Integer.parseInt(yearS);
 					register.CalculateByProportion();
 
-					//checar se existem esse mês e ano cadastrados (ano guardado em = xField e mês em yField)
+					//checar se existem esse mes e ano cadastrados (ano guardado em = xField e mï¿½s em yField)
 
 
 				} else {

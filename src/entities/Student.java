@@ -1,13 +1,9 @@
 package entities;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Scanner;
+
 
 public class Student {
 
@@ -61,7 +57,7 @@ public class Student {
 			fw.close();
 
 		} catch (IOException ex) {
-			// TODO Auto-generated catch block
+
 			ex.printStackTrace();
 		}
 		return "cadastrado com sucesso";
@@ -81,7 +77,7 @@ public class Student {
 		return result;
 	}
 
-	// Metodo de validação
+	// Metodo de validacao
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

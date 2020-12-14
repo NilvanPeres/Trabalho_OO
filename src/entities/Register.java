@@ -34,7 +34,7 @@ public class Register {
 		this.students.add(s);
 	}
 
-	// Metodo para lerArquivo e lançar excessão caso não ache o arquivo.
+	// Metodo para lerArquivo e lancar excessao caso nao ache o arquivo.
 	public void lerArquivoAlunos () throws IOException {
 
 		try {
@@ -117,7 +117,7 @@ public class Register {
 			ex.printStackTrace();
 		}
 	}
-	//calcular por proporção
+	//calcular por proporï¿½ï¿½o
 	public void CalculateByProportion() {
 
 		String message ="";
@@ -155,35 +155,12 @@ public class Register {
 			totalExpense += e.getAccount();
 		}
 		double result = totalExpense / totalStudents;
-		String message = "Cada pessoa pagará:" + result + "R$" + "\n";
+		String message = "Cada pessoa pagara:" + result + "R$" + "\n";
 		JOptionPane.showMessageDialog(null, message);
 	}
-	/*
-	public void recordStudent() {
-		String resposta = "";
 
-		Iterator<Student> it = students.iterator();
-		while (it.hasNext()) {
-			Student s = it.next();
-			resposta += "nome =  " + s.getName() + " ; " + "email = " + s.getEmail() + " ; " +  "renda = " + s.getIncome() + "\n";
-		}
 
-		PrintWriter saida = null;
-		try {
-			saida = new PrintWriter(new FileWriter("alunos.txt", true));
-
-			saida.print(resposta);
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (saida != null)
-				saida.close();
-		}
-
-    }
-	 */
-
-	// Metodo para checar se o user ja é cadastrado
+	// Metodo para checar se o user ja cadastrado
 	public boolean check_students() {
 		Iterator<Student> it = students.iterator();
 		if (it.hasNext() == false)
@@ -192,7 +169,7 @@ public class Register {
 			return true;
 	}
 
-	// Método para checar se já existe a Expense cadastrada
+	// Mï¿½todo para checar se jï¿½ existe a Expense cadastrada
 	public boolean check_expenses() {
 		Iterator<Expense> it = expenses.iterator();
 		if (it.hasNext() == false)

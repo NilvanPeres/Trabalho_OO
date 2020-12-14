@@ -44,7 +44,7 @@ public class Category {
 		expenses.remove(e);
 	}
 
-	//get Registro da categoria
+	//get registro da categoria
 	public String getCategoryRegister() {
 		return categoryRegister;
 
