@@ -45,7 +45,7 @@ public class Program {
 		System.out.println("Menu description: ");
 		int opInt = 0;
 		String opStr;
-		
+
 		do {
 			opStr = JOptionPane.showInputDialog(null,
 					"Choose an option. Or type 7 to EXIT: \n "
@@ -58,12 +58,12 @@ public class Program {
 				JOptionPane.showInputDialog(null,
 						"INVALID INPUT !!! Choose an option. Or type 7 to QUIT: \n "
 								+ "  \n 1. Register Student. \n 2. Register Category. \n 3. Register Expense. \n" + 
-								" 4. Calculate. \n 5. List Students. \n 6. List Expenses. \n 7. Exit.");
+						" 4. Calculate. \n 5. List Students. \n 6. List Expenses. \n 7. Exit.");
 				opInt = 0;
 			}
 			switch (opInt) {
 			case 1:
-				
+
 				String nomeEstudante = JOptionPane.showInputDialog(null, "Digite seu nome: ");
 				String emailEstudante = JOptionPane.showInputDialog(null, "Digite seu e-mail: ");
 				String renda = JOptionPane.showInputDialog(null, "Digite sua renda: ");
@@ -84,8 +84,8 @@ public class Program {
 							"Nï¿½o pode cadastrar renda negativa!!!\n\n" + " RendimentoInvalidoException ");
 					break;
 				}
-				
-				  Student s = new Student(nomeEstudante, emailEstudante, income);
+
+				Student s = new Student(nomeEstudante, emailEstudante, income);
 				try {
 					if (nomeEstudante.isEmpty() || emailEstudante.isEmpty() || renda.isEmpty()) {
 						throw new NoRegisterFoundException("Dados incompletos!! Por favor preencha todos os campos");
@@ -98,7 +98,7 @@ public class Program {
 				}
 				register.recordStudent();
 				break;
-				
+
 			case 2:
 				String nomeCategoria = JOptionPane.showInputDialog(null, "Digite o nome da categoria: ");
 				Category c = new Category(nomeCategoria);
@@ -123,12 +123,12 @@ public class Program {
 				} else {
 				}
 				break;
-			
+
 			case 3:
 				String description = JOptionPane.showInputDialog(null, "Digite o nome da despesa");
 				String valorDespesa = JOptionPane.showInputDialog(null, "Digite o valor da despesa");
 				String DespesaCategory = JOptionPane.showInputDialog(null, "Digite a categoria da despesa");
-				
+
 				try {
 					if (DespesaCategory.isEmpty())
 						throw new NoCategoryInExpenseException();
@@ -137,7 +137,7 @@ public class Program {
 							"Dados incompletos!! Por favor preencha todos os campos ");
 					break;
 				}
-				
+
 				try {
 					if (valorDespesa.isEmpty())
 						throw new RendimentoInvalidoException();
@@ -187,7 +187,7 @@ public class Program {
 				}
 				e.despesaTxt(month, year);
 				break;
-			
+
 			case 4:
 				String[] options = {"CalculateByProportion", "CalculateIguality"};
 				int x = JOptionPane.showOptionDialog(null, "Choose an option", "",
@@ -196,47 +196,37 @@ public class Program {
 				if (x == 0) {
 					//Primeiro tem q checar sem tem alunos e despesas cadastrados para realizar a divisão de despesas.
 
-					//Caso tenham, perguntar o mês e o ano para o cálculo desejado
-					JTextField xField = new JTextField(5);
-					JTextField yField = new JTextField(5);
+					String monthS = JOptionPane.showInputDialog(null, "Mês desejado: ");
+					int monthInt = Integer.parseInt(monthS);
+					String yearS = JOptionPane.showInputDialog(null, "Ano desejado: ");
+					int yearI = Integer.parseInt(yearS);
+					register.CalculateByProportion();
 
-					JPanel myPanel = new JPanel();
-					myPanel.add(new JLabel("Type Year: "));
-					myPanel.add(xField);
-					myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-					myPanel.add(new JLabel("Type Month: "));
-					myPanel.add(yField);
-
-					int result = JOptionPane.showConfirmDialog(null, myPanel,
-							"Type year and month that will be calculated", JOptionPane.OK_CANCEL_OPTION);
-					if (result == JOptionPane.OK_OPTION) {
-						System.out.println("Ano: " + xField.getText());
-						System.out.println("Mes: " + yField.getText());
-						register.CalculateByProportion();
-					}
 					//checar se existem esse mês e ano cadastrados (ano guardado em = xField e mês em yField)
-					
+
 
 				} else {
-					
+
 					register.CalculateByEquality();
 				}
 				break;
-			
-			case 5: 
-				JOptionPane.showMessageDialog(null, ": \n");
-				register.lerArquivoAlunos();
-				
 
-				
+			case 5: 
+
+				register.lerArquivoAlunos();
+
 				break;
 
-				case 6:
-					JOptionPane.showMessageDialog(null, "Despesas cadastradas no mês atual: \n");
-					
-					register.lerArquivoDespesas ();
+			case 6:
+				String monthS = JOptionPane.showInputDialog(null, "Mês desejado: ");
+				int monthInt = Integer.parseInt(monthS);
+				String yearS = JOptionPane.showInputDialog(null, "Ano desejado: ");
+				int yearI = Integer.parseInt(yearS);
+				JOptionPane.showMessageDialog(null, "Despesas cadastradas no mês e ano desejado: \n");
+				register.lerArquivoDespesas(monthInt, yearI);
+				break;
 			}
-			
+
 
 		} while (opInt != 7);
 		System.out.println("saindo do menu");
@@ -286,6 +276,6 @@ public class Program {
 		 */
 	}
 
-	
-		
-	}
+
+
+}
