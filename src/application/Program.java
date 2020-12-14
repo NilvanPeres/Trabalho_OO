@@ -212,28 +212,29 @@ public class Program {
 					if (result == JOptionPane.OK_OPTION) {
 						System.out.println("Ano: " + xField.getText());
 						System.out.println("Mes: " + yField.getText());
+						register.CalculateByProportion();
 					}
 					//checar se existem esse mês e ano cadastrados (ano guardado em = xField e mês em yField)
 					
 
 				} else {
-					register.calculateEquility(null, null);
+					
+					register.CalculateByEquality();
 				}
 				break;
 			
 			case 5: 
-				
+				JOptionPane.showMessageDialog(null, ": \n");
 				register.lerArquivoAlunos();
 				
 
-				break;
 				
-					case 6:
-						if(register.check_expenses() == false){
-							System.out.println("Nenhuma registro ainda\n");
-						}
-						else
-							JOptionPane.showMessageDialog(null, register.getExpenses().toString());
+				break;
+
+				case 6:
+					JOptionPane.showMessageDialog(null, "Despesas cadastradas no mês atual: \n");
+					
+					register.lerArquivoDespesas ();
 			}
 			
 

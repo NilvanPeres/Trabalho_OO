@@ -58,38 +58,115 @@ public class Register {
 	    }
 	 
 	
-	   
-	   public void lerArquivoAlunos () throws IOException {
+	public void lerArquivoAlunos () throws IOException {
 
 		   try {
-               FileInputStream arquivo = new FileInputStream("alunos.txt");
-               InputStreamReader input = new InputStreamReader(arquivo);
-               BufferedReader br = new BufferedReader(input);
-             
-               String linha; 
-              do {
-           	   
-           	   linha = br.readLine();
-           	   if  (linha != null) {
-           		   
-           		 
-           			   JOptionPane.showMessageDialog(null,"Estudante: \n" + linha);
-           			
-           			   }
- 	                
-           			   
-           		   }
-           	   
-              while(linha != null);
-           	
-               
-           } catch (Exception y) {
-               System.out.println("erro");
-           }
+            FileInputStream arquivo = new FileInputStream("alunos.txt");
+            InputStreamReader input = new InputStreamReader(arquivo);
+            BufferedReader br = new BufferedReader(input);
+          
+            String linha; 
+           do {
+        	   
+        	   linha = br.readLine();
+        	   if  (linha != null) {
+        		   
+        		 
+        			   JOptionPane.showMessageDialog(null,"Estudante: \n" + linha);
+        			
+        			   }
+	                
+        			   
+        		   }
+        	   
+           while(linha != null);
+        	
+            
+        } catch (Exception y) {
+            System.out.println("erro");
+        }
 		   
 			
-	        }
+	}
+    
+	public void lerArquivoDespesas () throws IOException {
+
+		   try {
+         FileInputStream arquivo = new FileInputStream("despesas_Dez_2020.txt");
+         InputStreamReader input = new InputStreamReader(arquivo);
+         BufferedReader br = new BufferedReader(input);
+       
+         String linha; 
+        do {
+     	   
+     	   linha = br.readLine();
+     	   if  (linha != null) {
+     		   
+     		 
+     			   JOptionPane.showMessageDialog(null,"Estudante: \n" + linha);
+     			
+     			   }
+	                
+     			   
+     		   }
+     	   
+        while(linha != null);
+     	
+         
+     } catch (Exception y) {
+         System.out.println("erro");
+     }
+		   
+			
+	}
+ 
 	   
+	   
+	   public void CalculateByProportion() {
+		   	Iterator<Student> itp = students.iterator();
+	    	Iterator<Student> it = students.iterator();
+	    	Iterator<Expense> itd = expenses.iterator();
+	    	float rendaTotal = 0;
+	    	float despesasSoma = 0; 
+	    	double result = 0;
+	    	
+	    	
+	    	while (itd.hasNext()) {
+	    		Expense e = itd.next();
+	    		despesasSoma += e.getAccount();
+	    	}
+	    	
+	    	while (itp.hasNext()) {
+	    		Student s = itp.next();
+	    		rendaTotal += s.getIncome(); 
+	    	}
+	    	
+	    	String msg ="";
+	    	
+	    	while(it.hasNext()) {
+	    		Student s = it.next();
+	    		result = (despesasSoma * s.getIncome()) / rendaTotal;
+	    		msg += "Nome: " + s.getName() + " Pagará " + result + "\n";
+	    	}
+	    	JOptionPane.showMessageDialog(null, msg);    	
+	    }
+	   
+	   public void CalculateByEquality() {
+	    	Iterator<Expense> itd = expenses.iterator();
+	    	float despesasSoma = 0;
+	    	
+	    	int quantidadePessoas = students.size();
+	    	
+	    	while (itd.hasNext()) {
+	    		Expense e = itd.next();
+	    		despesasSoma += e.getAccount();
+	    	}
+	    	float div = despesasSoma / quantidadePessoas;
+	    	
+	    	String msg = "Cada pessoa pagará:" + div +"\n";
+	    	
+	    	JOptionPane.showMessageDialog(null, msg);
+	    }
 	
 	public boolean check_students() {
 		Iterator<Student> it = students.iterator();

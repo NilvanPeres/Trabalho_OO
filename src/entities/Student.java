@@ -1,10 +1,13 @@
 package entities;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Scanner;
 
 public class Student {
 
@@ -45,7 +48,8 @@ public class Student {
 	public double getIncome() {
 		return income;
 	}
-
+	
+	
 	//Polimorfismo de email e nome
 	@Override
 	public int hashCode() { 
@@ -88,4 +92,6 @@ public class Student {
 	public String toString() {
 		return "Student [name=" + name + ", email=" + email + ", income=" + income + "]";
 	}
+
+	
 }
