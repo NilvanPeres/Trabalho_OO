@@ -1,3 +1,0 @@
-nome =  davi ; email = matheus ; renda = 100.0
-nome =  davi ; email = matheus ; renda = 100.0
-nome =  nilvan ; email = nilvan@ ; renda = 9999.0

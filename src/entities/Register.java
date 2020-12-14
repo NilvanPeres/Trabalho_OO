@@ -3,6 +3,7 @@ package entities;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,6 +11,9 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Scanner;
+
+import javax.swing.JOptionPane;
 
 public class Register {
 
@@ -29,7 +33,8 @@ public class Register {
 		this.students.add(s);
 	}
 	
-	 public void recordStudent() {
+	
+	public void recordStudent() {
 			String resposta = "";
 			
 			Iterator<Student> it = students.iterator();
@@ -51,35 +56,41 @@ public class Register {
 			}
 			
 	    }
-	   
+	 
+	
 	   
 	   public void lerArquivoAlunos () throws IOException {
 
-	        try {
-	                FileInputStream arquivo = new FileInputStream("alunosCadastrados.txt");
-	                InputStreamReader input = new InputStreamReader(arquivo);
-	                BufferedReader br = new BufferedReader(input);
-	               
-	       
-	    
-	                String linha; 
-	               do {
-	            	   linha = br.readLine();
-	            	   if  (linha != null) {
-	            		   String[] palavras = linha.split(";");
-	            		   System.out.println("Nova linha---------------------------------");
-	            		   for(int i =0; i<palavras.length; i++) {
-	            			   System.out.println("Palavra lida = " + palavras[i] );
-	            		   }
-	            	   }
-	               }while(linha != null);
-	            	
-	                
-	            } catch (Exception e) {
-	                System.out.println("erro");
-	            }
+		   try {
+               FileInputStream arquivo = new FileInputStream("alunos.txt");
+               InputStreamReader input = new InputStreamReader(arquivo);
+               BufferedReader br = new BufferedReader(input);
+             
+               String linha; 
+              do {
+           	   
+           	   linha = br.readLine();
+           	   if  (linha != null) {
+           		   
+           		 
+           			   JOptionPane.showMessageDialog(null,"Estudante: \n" + linha);
+           			
+           			   }
+ 	                
+           			   
+           		   }
+           	   
+              while(linha != null);
+           	
+               
+           } catch (Exception y) {
+               System.out.println("erro");
+           }
+		   
+			
 	        }
-
+	   
+	
 	public boolean check_students() {
 		Iterator<Student> it = students.iterator();
 		if (it.hasNext() == false)
@@ -87,6 +98,17 @@ public class Register {
 		else
 			return true;
 	}
+	
+	public boolean check_expenses() {
+		Iterator<Expense> it = expenses.iterator();
+		if (it.hasNext() == false)
+			return false;
+		else
+			return true;
+	}
+	
+	
+	
 
 	public List<Category> getCategories() { // get da lista de categoria
 		return categories;
@@ -112,13 +134,7 @@ public class Register {
 		this.expenses.add(e);
 	}
 
-	public boolean check_expenses() {
-		Iterator<Expense> it = expenses.iterator();
-		if (it.hasNext() == false)
-			return false;
-		else
-			return true;
-	}
+	
 
 	public void add(SubCategory sub) { // adiciona despesa
 		this.SubCategories.add(sub);

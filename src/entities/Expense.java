@@ -14,13 +14,15 @@ public class Expense {
     private Integer year;	        // ano
     private String description; //descricao da despesa
     private String mes;
+	private String CategoryExpense;
    
     // Construtor
-    public Expense(String description, double account, Integer monthInteger, Integer yearInteger) {
+    public Expense(String description, double account, Integer monthInteger, Integer yearInteger, String CategoryExpense) {
     	this.description = description;
     	this.account = account;
     	this.month = monthInteger;
     	this.year = yearInteger; 	
+    	this.CategoryExpense = CategoryExpense;
 	}
 	
     //Arquivo Txt para Despesa
@@ -73,7 +75,7 @@ public class Expense {
 			FileWriter fw = new FileWriter(fileName, true);
 			PrintWriter pw = new PrintWriter(fw);
 			
-			pw.println("Nome: " + this.description + ";  Valor: " + this.account); //est� faltando categoria e subcategoria
+			pw.println("Nome: " + this.description + ";  Valor: " + this.account + ";  Categoria:" + this.CategoryExpense); //est� faltando categoria e subcategoria
 			pw.flush();
 			pw.close();
 			fw.close();	
@@ -89,6 +91,8 @@ public class Expense {
 	public double getAccount() {
 		return account;
 	}
+	
+	
 
 	public void setAccount(double account) {
 		this.account = account;
@@ -132,7 +136,7 @@ public class Expense {
 	
 	@Override //polimorfismo
 	public String toString() {
-		return "nome: " + description + ", conta: R$ " + account + ", mês: " + month + ", ano: " + year;
+		return "nome: " + description + ", conta: R$ " + account + ", mês: " + month + ", ano: " + year +", categoria: " + CategoryExpense + "\n\n" ;
 		}
 
 

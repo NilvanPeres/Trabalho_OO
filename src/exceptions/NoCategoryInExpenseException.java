@@ -1,4 +1,4 @@
-/*
+ /*
  * Trabalho de Orientacao a Objetos 
  * Feito por: Ana Julia 
  *            Davi Matheus
@@ -8,13 +8,17 @@
  */
 package exceptions;
 
-public class NoCategoryInExpenseException extends RuntimeException {
-    
-    
-	private static final long serialVersionUID = 1L;
+ public class NoCategoryInExpenseException extends Exception 
+{
+    public NoCategoryInExpenseException() 
+    {
+        super();
+    }
+    public NoCategoryInExpenseException(String errorMessage) 
 
-	// Excecao para quando nao houver despesa na categoria
-	public NoCategoryInExpenseException(String msg) {
-        super(msg);
+
+
+{
+        super(errorMessage);
     }
 }

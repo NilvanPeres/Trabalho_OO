@@ -127,7 +127,17 @@ public class Program {
 			case 3:
 				String description = JOptionPane.showInputDialog(null, "Digite o nome da despesa");
 				String valorDespesa = JOptionPane.showInputDialog(null, "Digite o valor da despesa");
-
+				String DespesaCategory = JOptionPane.showInputDialog(null, "Digite a categoria da despesa");
+				
+				try {
+					if (DespesaCategory.isEmpty())
+						throw new NoCategoryInExpenseException();
+				} catch (NoCategoryInExpenseException error) {
+					JOptionPane.showMessageDialog(null,
+							"Dados incompletos!! Por favor preencha todos os campos ");
+					break;
+				}
+				
 				try {
 					if (valorDespesa.isEmpty())
 						throw new RendimentoInvalidoException();
@@ -137,14 +147,14 @@ public class Program {
 					break;
 				}
 				Double valorDespesaInt = Double.valueOf(valorDespesa);	
-				String monthString = JOptionPane.showInputDialog(null, "Digite o m�s: ");
+				String monthString = JOptionPane.showInputDialog(null, "Digite o mes: ");
 				Integer month = Integer.valueOf(monthString);
 				try {
 					if (month <= 0 || month > 12)
 						throw new DataInvalidaException();
 				} catch (DataInvalidaException error) {
 					JOptionPane.showMessageDialog(null,
-							"M�s Invalido !!!\n\n ");
+							"Mes Invalido !!!\n\n ");
 					break;
 				}
 				String yearSring = JOptionPane.showInputDialog(null, "Digite o ano: ");
@@ -157,7 +167,7 @@ public class Program {
 					break;
 				}
 				Integer year = Integer.valueOf(yearSring);
-				Expense e = new Expense(description, valorDespesaInt, month, year);
+				Expense e = new Expense(description, valorDespesaInt, month, year, DespesaCategory);
 				try {
 					if (valorDespesaInt < 0)
 						throw new RendimentoInvalidoException();
@@ -212,37 +222,18 @@ public class Program {
 				break;
 			
 			case 5: 
-				 try {
-		                FileInputStream arquivo = new FileInputStream("alunos.txt");
-		                InputStreamReader input = new InputStreamReader(arquivo);
-		                BufferedReader br = new BufferedReader(input);
-		              
-		                String linha; 
-		               do {
-		            	   
-		            	   linha = br.readLine();
-		            	   if  (linha != null) {
-		            		   
-		            		 
-		            			   JOptionPane.showMessageDialog(null,"Estudante: \n" + linha);
-		            		   }
-		            	   }
-		               while(linha != null);
-		            	
-		                
-		            } catch (Exception y) {
-		                System.out.println("erro");
-		            }
-					
-					case 6:
 				
-				if(register.check_expenses() == false){
-					System.out.println("Nenhuma estudante cadastrado ainda\n");
-				}
-				else {
-					JOptionPane.showMessageDialog(null, register.getExpenses().toString());
+				register.lerArquivoAlunos();
+				
+
 				break;
-				}	
+				
+					case 6:
+						if(register.check_expenses() == false){
+							System.out.println("Nenhuma registro ainda\n");
+						}
+						else
+							JOptionPane.showMessageDialog(null, register.getExpenses().toString());
 			}
 			
 
