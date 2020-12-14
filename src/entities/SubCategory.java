@@ -5,13 +5,13 @@ public class SubCategory extends Category{
 
 	// Atributo
 	private String SubCategoryName; // nome da subcategoria
-	
+
 	// Construtor
-	 public SubCategory(String SubCategoryName) {
-		 super(SubCategoryName);
-		 this.SubCategoryName = SubCategoryName;
-		}
-	
+	public SubCategory(String SubCategoryName) {
+		super(SubCategoryName);
+		this.SubCategoryName = SubCategoryName;
+	}
+
 	// Metodos gets e sets
 	public String getSubCategoryName() {
 		return SubCategoryName;
@@ -21,11 +21,11 @@ public class SubCategory extends Category{
 		this.SubCategoryName = subCategoryName;
 	}
 
-	// Polimorfismo
-    @Override
-    public String toString() {
-        return "Subcategory: "
-        + SubCategoryName;
-    }
-	
+	// Polimorfismo para print
+	@Override
+	public String toString() {
+		return "Subcategory: "
+				+ SubCategoryName;
+	}
+
 }

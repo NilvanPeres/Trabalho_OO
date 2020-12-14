@@ -4,14 +4,12 @@ package entities;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Scanner;
+
 
 import javax.swing.JOptionPane;
 
@@ -22,8 +20,8 @@ public class Register {
 	private List<Expense> expenses;
 	private List<SubCategory> SubCategories;
 	private String mes;
-	private int year;
 	private int month;
+	private int year;
 
 	public Register() {
 		this.students = new ArrayList<Student>(); // array list de estudantes
@@ -36,31 +34,7 @@ public class Register {
 		this.students.add(s);
 	}
 
-
-	public void recordStudent() {
-		String resposta = "";
-
-		Iterator<Student> it = students.iterator();
-		while (it.hasNext()) {
-			Student s = it.next();
-			resposta += "nome =  " + s.getName() + " ; " + "email = " + s.getEmail() + " ; " +  "renda = " + s.getIncome() + "\n";
-		}
-
-		PrintWriter saida = null;
-		try {
-			saida = new PrintWriter(new FileWriter("alunos.txt", true));
-
-			saida.print(resposta);
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (saida != null)
-				saida.close();
-		}
-
-	}
-
-
+	// Metodo para lerArquivo e lançar excessão caso não ache o arquivo.
 	public void lerArquivoAlunos () throws IOException {
 
 		try {
@@ -70,29 +44,19 @@ public class Register {
 
 			String linha; 
 			do {
-
 				linha = br.readLine();
 				if  (linha != null) {
-
-
 					JOptionPane.showMessageDialog(null,"Estudante: \n" + linha);
-
 				}
-
-
 			}
-
 			while(linha != null);{
-
 			}
 			br.close();
 		} catch (Exception y) {
 			System.out.println("erro");
 		}
-
-
 	}
-
+	//Metodo para ler Arquivo Despesas
 	public void lerArquivoDespesas (int month, int year) throws IOException {
 		this.month = month;
 		this.year = year;
@@ -136,83 +100,90 @@ public class Register {
 		String FileName = "despesas_"+mes+"_"+year+".txt";
 		List<String> records = new ArrayList<String>();
 		try {
-
 			BufferedReader reader = new BufferedReader(new FileReader(FileName));
-
 			String line; 
 			do {
-
 				line = reader.readLine();
 				if  (line != null) {
 					JOptionPane.showMessageDialog(null,"Despesas: \n" + line);
 					records.add(line);
 				}
 			}
-
 			while(line  != null);{
-
 			}
 			reader.close();
-
 		} catch (Exception ex) {
 			System.err.format("Exception occurred trying to read '%s'.", FileName);
 			ex.printStackTrace();
-
 		}
-
-
 	}
-
-
-
+	//calcular por proporção
 	public void CalculateByProportion() {
 
-
-		Iterator<Student> itp = students.iterator();
-		Iterator<Student> it = students.iterator();
-		Iterator<Expense> itd = expenses.iterator();
-		float rendaTotal = 0;
-		float despesasSoma = 0; 
+		String message ="";
+		double totalIncome = 0;
+		double totalExpense = 0; 
 		double result = 0;
-
-
-		while (itd.hasNext()) {
-			Expense e = itd.next();
-			despesasSoma += e.getAccount();
-		}
-
-		while (itp.hasNext()) {
-			Student s = itp.next();
-			rendaTotal += s.getIncome(); 
-		}
-
-		String msg ="";
-
-		while(it.hasNext()) {
-			Student s = it.next();
-			result = (despesasSoma * s.getIncome()) / rendaTotal;
-			msg += "Nome: " + s.getName() + " Pagará " + result + "\n";
-		}
-		JOptionPane.showMessageDialog(null, msg);    	
-	}
-
-	public void CalculateByEquality() {
+		Iterator<Student> studentAr = students.iterator();
+		Iterator<Student> studentH = students.iterator();
 		Iterator<Expense> itd = expenses.iterator();
-		float despesasSoma = 0;
-
-		int quantidadePessoas = students.size();
 
 		while (itd.hasNext()) {
 			Expense e = itd.next();
-			despesasSoma += e.getAccount();
+			totalExpense += e.getAccount();
 		}
-		float div = despesasSoma / quantidadePessoas;
 
-		String msg = "Cada pessoa pagará:" + div +"\n";
+		while (studentAr.hasNext()) {
+			Student s = studentAr.next();
+			totalIncome += s.getIncome(); 
+		}
 
-		JOptionPane.showMessageDialog(null, msg);
+		while(studentH.hasNext()) {
+			Student s = studentH.next();
+			result = (totalExpense * s.getIncome()) / totalIncome;
+			message += "Name: " + s.getName() + " will pay " + result + " R$" + "\n";
+		}
+		JOptionPane.showMessageDialog(null, message);    	
 	}
+	//Calcular por equality
+	public void CalculateByEquality() {
+		double totalExpense = 0;
+		int totalStudents = students.size();
+		Iterator<Expense> itd = expenses.iterator();
+		while (itd.hasNext()) {
+			Expense e = itd.next();
+			totalExpense += e.getAccount();
+		}
+		double result = totalExpense / totalStudents;
+		String message = "Cada pessoa pagará:" + result + "R$" + "\n";
+		JOptionPane.showMessageDialog(null, message);
+	}
+	/*
+	public void recordStudent() {
+		String resposta = "";
 
+		Iterator<Student> it = students.iterator();
+		while (it.hasNext()) {
+			Student s = it.next();
+			resposta += "nome =  " + s.getName() + " ; " + "email = " + s.getEmail() + " ; " +  "renda = " + s.getIncome() + "\n";
+		}
+
+		PrintWriter saida = null;
+		try {
+			saida = new PrintWriter(new FileWriter("alunos.txt", true));
+
+			saida.print(resposta);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (saida != null)
+				saida.close();
+		}
+
+    }
+	 */
+
+	// Metodo para checar se o user ja é cadastrado
 	public boolean check_students() {
 		Iterator<Student> it = students.iterator();
 		if (it.hasNext() == false)
@@ -221,6 +192,7 @@ public class Register {
 			return true;
 	}
 
+	// Método para checar se já existe a Expense cadastrada
 	public boolean check_expenses() {
 		Iterator<Expense> it = expenses.iterator();
 		if (it.hasNext() == false)
@@ -229,9 +201,7 @@ public class Register {
 			return true;
 	}
 
-
-
-
+	//getters e setters
 	public List<Category> getCategories() { // get da lista de categoria
 		return categories;
 	}

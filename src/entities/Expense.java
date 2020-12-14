@@ -7,30 +7,31 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Expense { 
-	
+
 	// Atributos
 	private double account;     //valor da conta
-    private int month;          // mes
-    private Integer year;	        // ano
-    private String description; //descricao da despesa
-    private String mes;
+	private int month;          // mes
+	private Integer year;	        // ano
+	private String description; //descricao da despesa
+	private String mes;
 	private String CategoryExpense;
-   
-    // Construtor
-    public Expense(String description, double account, Integer monthInteger, Integer yearInteger, String CategoryExpense) {
-    	this.description = description;
-    	this.account = account;
-    	this.month = monthInteger;
-    	this.year = yearInteger; 	
-    	this.CategoryExpense = CategoryExpense;
+
+	// Construtor
+	public Expense(String description, double account, Integer monthInteger, Integer yearInteger, String CategoryExpense) {
+		this.description = description;
+		this.account = account;
+		this.month = monthInteger;
+		this.year = yearInteger; 	
+		this.CategoryExpense = CategoryExpense;
 	}
-	
-    //Arquivo Txt para Despesa
-    public String despesaTxt(Integer month, Integer year){
+
+	//Arquivo Txt para Despesa
+	public String despesaTxt(Integer month, Integer year){
 		try {
 			this.month = month;
 			this.year = year;
-			
+
+			// Sequencia para nomear o nome do arquivo de acordo com o int digitado pelo user
 			if(month == 1 ){
 				this.mes = "Jan";
 			}
@@ -67,21 +68,21 @@ public class Expense {
 			else if (month == 12) {
 				this.mes = "Dez";
 			}
-				
-			
+
+
 			String fileName = "despesas_"+this.mes+"_"+this.year+".txt";
-			
-			
+
+
 			FileWriter fw = new FileWriter(fileName, true);
 			PrintWriter pw = new PrintWriter(fw);
-			
-			pw.println("Nome: " + this.description + ";  Valor: " + this.account + ";  Categoria:" + this.CategoryExpense); //est� faltando categoria e subcategoria
+
+			pw.println("Nome: " + this.description + ";  Valor: " + this.account + ";  Categoria:" + this.CategoryExpense); 
 			pw.flush();
 			pw.close();
 			fw.close();	
-			
+
 		} catch (IOException ex) {
-			// TODO Auto-generated catch block
+
 			ex.printStackTrace();
 		}
 		return "cadastrado com sucesso";
@@ -91,13 +92,11 @@ public class Expense {
 	public double getAccount() {
 		return account;
 	}
-	
-	
 
 	public void setAccount(double account) {
 		this.account = account;
 	}
-	
+
 
 	public String getMes() {
 		return mes;
@@ -122,22 +121,20 @@ public class Expense {
 	public void setYear(int year) {
 		this.year = year;
 	}
-	
-	// Metodos da lista
+
+	// Metodos da lista Expense
 	public void addExpense(double account) { // adiciona despesa
 		this.account += account;
 	}
-	
+
 	public void removeExpense(double account) { //remove despesa
 		this.account -= account;
 	}
-	
-	
-	
-	@Override //polimorfismo
+
+	@Override //polimorfismo para print
 	public String toString() {
 		return "nome: " + description + ", conta: R$ " + account + ", mês: " + month + ", ano: " + year +", categoria: " + CategoryExpense + "\n\n" ;
-		}
+	}
 
 
 }

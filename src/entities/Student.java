@@ -48,6 +48,24 @@ public class Student {
 	public double getIncome() {
 		return income;
 	}
+	// Metodo para Escrever alunos e seus atributos
+	public String alunoTxt(){
+		try {
+
+			FileWriter fw = new FileWriter("alunos.txt", true);
+			PrintWriter pw = new PrintWriter(fw);
+
+			pw.println("Nome: " + this.name + "; Email: " + this.email + "; Rendimento: " + this.income);
+			pw.flush();
+			pw.close();
+			fw.close();
+
+		} catch (IOException ex) {
+			// TODO Auto-generated catch block
+			ex.printStackTrace();
+		}
+		return "cadastrado com sucesso";
+	}
 	
 	
 	//Polimorfismo de email e nome
@@ -88,7 +106,7 @@ public class Student {
 		return true;
 	}
 
-	@Override
+	@Override //polimorfismo para print
 	public String toString() {
 		return "Student [name=" + name + ", email=" + email + ", income=" + income + "]";
 	}
