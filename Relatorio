@@ -1,0 +1,47 @@
+Neste trabalho utilizamos algumas das principais metodologias de Programação Orientação a Objetos.
+Entre eles, foram trabalhados Atributos, Métodos, Encapsulamento, Exceções, Herança, Interface e Polimorfismo.
+
+Foram criados quatro pacotes: Application, Entities, Exceptions e Interface.
+
+    -Application
+Nesse pacote há apenas uma classe: Program
+Nessa classe foi usada as bibliotecas java.swing.JOptionPane, que foi usado para fazer a main da nossa aplicação. Nela, fizemos uma interface simplificada destinada ao usuário, em que lhe são apresentadas opções de menu para definir o que o programa irá fazer.
+
+Será apresentado ao usuário essas opções de menu, dos quais para acessá-las é preciso digitar o número correspondente.
+
+Choose an option. Or type 7 to EXIT: 
+1. Register Student. 
+2. Register Category. 
+3. Register Expense. 
+4. Calculate.
+5. List Students.
+6. List Expenses. 
+7. Exit.
+
+Quando o usuário seleciona 1, ele vai poder fazer o registro do estudante, em qual define sua renda mensal, email e seu nome.
+Na opção 2, o usuário irá fazer o registro de sua categoria, e no fim  ele pergunta qual se ele pertence a uma subcategoria e sim pode editar.
+Na opção 3, usuário faz o registro de seus gastos, define o tipo, o valor e qual categoria ele pertence.
+Na opção 4, o usuário pode escolher entre fazer dois cálculos: O cálculo por proporção e o cálculo por igualdade. 
+Na opção 5, aqui é visto a lista de estudantes cadastrados.
+Na opção 6, o usuário escolhe a data de despesa para visualizar.
+Na opção 7, o usuário sai do menu.
+
+
+    -Pacote Entities
+Neste pacote foram feitas 5 classes, a classe do estudante, registro, categoria, subcategoria e despesa. Nelas foram utilizados vários atributos como nome, email, renda, nome da categoria, Nome da subcategoria, ano, mês, conta e descrição. Usamos métodos, como remover estudante, adicionar estudante, calcular a proporção, calcular a conta, remover a conta, adicionar conta, registrar aluno, etc. 
+
+Colocamos também uma herança na classe subCategoria, onde você herda instâncias da classe categoria para a classe subcategoria. 
+
+Fizemos também vários polimorfismos, colocando muitas formas no projeto onde classes derivadas de uma única classe base são capazes de invocar os métodos que, embora apresentem a mesma assinatura, comportam-se de maneira diferente para cada uma das classes derivadas. 
+
+    -Exceptions
+Este pacote foi feito com o intuito de definir quais casos não poderiam acontecer no programa.
+Sendo eles: Data Inválida, Rendimento inválido (renda negativa), Registro não encontrado, Exceção de Categoria (não pode ser vazia) e Exceção de Despesa.
+
+
+
+    -Interface
+Este pacote não foi totalmente implementado, a aba Sobre está pronta e mostra os nomes e as matrículas dos integrantes desse grupo. Porém, a aba Cadastro tem apenas algumas de suas funções em funcionamento.
+O vídeo que fala sobre o assunto, interface, que foi divulgado para nós não estava completo, então implementamos tudo o que conseguimos extrair do vídeo, mas não foi possível deixar a interface funcionando completamente. Por esse motivo, o menu existente no trabalho se encontra no pacote application, na classe Program, e é nele que o código deve ser compilado.
+
+
