@@ -6,6 +6,7 @@ Foram criados quatro pacotes: Application, Entities, Exceptions e Interface.
     -Application
 Nesse pacote há apenas uma classe: Program
 Nessa classe foi usada as bibliotecas java.swing.JOptionPane, que foi usado para fazer a main da nossa aplicação. Nela, fizemos uma interface simplificada destinada ao usuário, em que lhe são apresentadas opções de menu para definir o que o programa irá fazer.
+Nessa classe ocorrre o import de todas excessões que serão lançadas.
 
 Será apresentado ao usuário essas opções de menu, dos quais para acessá-las é preciso digitar o número correspondente.
 
@@ -26,19 +27,22 @@ Na opção 5, aqui é visto a lista de estudantes cadastrados.
 Na opção 6, o usuário escolhe a data de despesa para visualizar.
 Na opção 7, o usuário sai do menu.
 
-
     -Pacote Entities
-Neste pacote foram feitas 5 classes, a classe do estudante, registro, categoria, subcategoria e despesa. Nelas foram utilizados vários atributos como nome, email, renda, nome da categoria, Nome da subcategoria, ano, mês, conta e descrição. Usamos métodos, como remover estudante, adicionar estudante, calcular a proporção, calcular a conta, remover a conta, adicionar conta, registrar aluno, etc. 
+Neste pacote foram feitas 5 classes, a classe do estudante, registro, categoria, subcategoria e despesa. Nelas foram utilizados vários atributos como nome, email, renda, nome da categoria, Nome da subcategoria, ano, mês, conta e descrição. Usamos métodos, como remover estudante, adicionar estudante, calcular a proporção, calcular a conta, remover a conta, adicionar conta, registrar aluno, etc.
+Todos os *atributos das Classes dentro desse pacote* foram devidamente encapsuladas com o intuito de integridade do programa, para evitar que fiquem sujeitas as ações indevidas.
 
-Colocamos também uma herança na classe subCategoria, onde você herda instâncias da classe categoria para a classe subcategoria. 
+Colocamos também uma herança na classe subCategoria, onde você herda atributos da classe categoria para a classe subcategoria, com a finalidde de reaproveitar os atributos e metódos da classe mãe.
 
 Fizemos também vários polimorfismos, colocando muitas formas no projeto onde classes derivadas de uma única classe base são capazes de invocar os métodos que, embora apresentem a mesma assinatura, comportam-se de maneira diferente para cada uma das classes derivadas. 
+Exemplo de polimorfismo: as toStrings() é um método que tem diversas implementações no nosso código e a sua implementação é determinada pelo tipo de objeto que a chama, assim o polimorfismo permite que o método de uma classe seja chamado sem levar em consideração a sua implementação.
 
-    -Exceptions
+Na classe Expense foi implementado a escrita das Despesas, e a leitura é implementada na classe Register. A persistência do arquivo "aluno.txt" segue a mesma lógica.
+Consideramos que a leitura e escrita foram implementadas de forma coerente, pois mesmo após fechar e abrir o programa, é possível listar os dados dos arquivos desejados e adicionar novos dados ao arquivos já existentes.
+
+    -Pacote Exceptions
 Este pacote foi feito com o intuito de definir quais casos não poderiam acontecer no programa.
 Sendo eles: Data Inválida, Rendimento inválido (renda negativa), Registro não encontrado, Exceção de Categoria (não pode ser vazia) e Exceção de Despesa.
-
-
+Nesse pacote é possível observar o conceito de herança, porque RuntimeException é uma subclasse de Exception.
 
     -Interface
 Este pacote não foi totalmente implementado, a aba Sobre está pronta e mostra os nomes e as matrículas dos integrantes desse grupo. Porém, a aba Cadastro tem apenas algumas de suas funções em funcionamento.
